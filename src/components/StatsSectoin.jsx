@@ -1,76 +1,94 @@
 import React from 'react';
-
-const StatCard = ({ index, icon, value, label }) => (
-  <div className={`flex items-center justify-center h-[160px] text-white ${index<=2 && 'border-r-[1px] border-r-[white]/10'}`}>
-    <div className="bg-white/10 p-6 rounded-full">
-      {icon}
-    </div>
-    <div className='flex flex-col items-center p-4'>
-      <div className="text-2xl font-bold mb-1">{value}</div>
-      <div className="text-sm text-white/90 whitespace-nowrap">{label}</div>
-    </div>
-  </div>
-);
+import { motion } from 'framer-motion';
+import { useInView } from 'framer-motion';
 
 const StatsSection = () => {
-  const stats = [
-    {
-      icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-        </svg>
-      ),
-      value: "7+",
-      label: "Years of Excellence"
-    },
-    {
-      icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-        </svg>
-      ),
-      value: "1000+",
-      label: "Happy Students"
-    },
-    {
-      icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
-        </svg>
-      ),
-      value: "50+",
-      label: "Expert Faculty"
-    },
-    {
-      icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-        </svg>
-      ),
-      value: "15+",
-      label: "Programs"
-    }
-  ];
+  return (
+    <section className=" text-[#003A2E] pt-10 text-center">
+        <div className="container mx-auto min-h-[60vh] bg-[#fff9] px-8 py-16 rounded-xl relative overflow-hidden border border-white">
+        {/* Decorative elements */}
+        <div className="absolute top-8 left-8 w-8 h-8 rounded-full bg-yellow-200/80" />
+        <div className="absolute top-24 left-24 w-4 h-4 rounded-full bg-purple-300/60" />
+        <div className="absolute top-4 right-8 w-4 h-4 rounded-full bg-purple-400/60" />
+        <div className="absolute bottom-12 left-1/2 text-yellow-400 text-2xl">✧</div>
+
+        {/* Main content */}
+        <div className="max-w-6xl mx-auto">
+
+            <div className=" lg:grid-cols-4 gap-6 mt-12 grid grid-cols-2 gap-x-16 gap-y-16 w-full">
+
+            <div className='flex items-center'>
+                <h2 className="text-[#003A2E] text-2xl md:text-3xl font-bold mb-8">
+                By the numbers:
+                <br />
+                Our Impact
+                </h2>
+            </div>
+            <div className='relative'>
+                <StatCard
+                    number="5K"
+                    label="Satisfied"
+                    label2='students'
+                    bgColor="bg-white"
+                    mainRotation={-4}
+                    backgroundRotation={5}
+                />
+                <div className={`absolute z-0 inset-0 border border-[white] rounded-2xl transform rotate-0`}></div>
+            </div>
+            <div className='relative'>
+                <StatCard
+                    number="7"
+                    label="Years of"
+                    label2='experience'
+                    bgColor="bg-yellow-50"
+                    mainRotation={4}
+                    backgroundRotation={-4}
+                />
+                <div className={`absolute z-0 inset-0 border border-[white] rounded-2xl transform rotate-0`}></div>
+            </div>
+            <div className='relative'>
+                <StatCard
+                    number="16"
+                    label="Learning"
+                    label2='programs'
+                    bgColor="bg-purple-50"
+                    mainRotation={-4}
+                    backgroundRotation={5}
+                />
+                <div className={`absolute z-0 inset-0 border border-[white] rounded-2xl transform rotate-0`}></div>
+            </div>
+            
+            </div>
+        </div>
+        </div>
+    </section>
+  );
+};
+
+const StatCard = ({ number, label, label2, bgColor, mainRotation, backgroundRotation }) => {
+  const ref = React.useRef(null);
+  const isInView = useInView(ref, { once: true });
 
   return (
-    <div data-scroll-section className="relative w-full bg-gradient-to-r from-[#B68C49] to-[#4A3728] z-[200]">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
-          {stats.map((stat, index) => (
-            <StatCard
-              key={index}
-              index={index}
-              icon={stat.icon}
-              value={stat.value}
-              label={stat.label}
-            />
-          ))}
-        </div>
+    <motion.div
+      ref={ref}
+      initial={{ scale: 0.5, opacity: 0 }}
+      animate={isInView ? { scale: 1, opacity: 1, rotate: mainRotation } : { scale: 0.5, opacity: 0 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      className={`${bgColor} rounded-2xl p-6 shadow-sm relative z-10`}
+    >
+      {/* <div className={`absolute inset-0 bg-[#BB914A] rounded-2xl transform rotate-[${backgroundRotation}deg]`}></div>   */}
+      <div className="text-4xl md:text-5xl font-bold text-[#003A2E] mb-2">
+        {number}
       </div>
-    </div>
+      <div className="text-[#003A2E] text-lg">
+        {label}
+      </div>
+      <div className="text-[#003A2E] text-lg">
+        {label2}
+      </div>
+    </motion.div>
   );
 };
 
 export default StatsSection;
-
-

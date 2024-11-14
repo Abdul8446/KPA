@@ -59,7 +59,6 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Hero from '../components/Hero';
 import Header from '../components/Header';
-import Stats from '../components/stats';
 import Courses from '../components/Courses';
 import Features from '../components/Features';
 import EventsCalendar from '../components/EventsCalendar';
@@ -69,6 +68,7 @@ import Testimonials from '../components/Testimonials';
 import LatestReads from '../components/LatestReads';
 import NewsletterSignup from '../components/NewsletterSignup';
 import Footer from '../components/Footer';
+import StatsSection from '../components/StatsSectoin';
 
 function Home() {
     return (
@@ -76,7 +76,7 @@ function Home() {
             <div className="background-attachment"></div>
             <Header />
             <Hero />
-            <Stats />
+            <StatsSection />
           {/* <SmoothScroll> */}
             <Courses />
             <Features />
