@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Management System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #4a90e2;
+            --secondary: #50c878;
+            --warning: #ffd700;
+            --danger: #ff6b6b;
+            --dark: #2c3e50;
+            --light: #f5f6fa;
+        }
+
+        body {
+            background-color: #f0f2f5;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary), #2c3e50);
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .notification-badge {
+            background: var(--danger);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        .dashboard {
+            padding: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .quick-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-card h3 {
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-card .value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .tabs {
+            background: white;
+            padding: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .tab-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .tab-btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-size: 1rem;
+            color: var(--dark);
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .tab-btn.active {
+            color: var(--primary);
+        }
+
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1rem;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--primary);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .content-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .content-card h3 {
+            color: var(--dark);
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 0.5rem;
+        }
+
+        .activity-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .activity-item:last-child {
+            border-bottom: none;
+        }
+
+        .btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: opacity 0.3s ease;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: #eee;
+            border-radius: 5px;
+            margin: 0.5rem 0;
+        }
+
+        .progress-bar .progress {
+            height: 100%;
+            background: var(--primary);
+            border-radius: 5px;
+            transition: width 0.3s ease;
+        }
+
+        .calendar {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .calendar-day {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--light);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .calendar-day:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .dashboard {
+                padding: 1rem;
+            }
+            
+            .tab-buttons {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div>
+            <h1>School Management System</h1>
+            <p>Welcome back, Administrator</p>
+        </div>
+        <div class="notification-badge">
+            3 New Notifications
+        </div>
+    </header>
+
+    <main class="dashboard">
+        <div class="quick-stats">
+            <div class="stat-card">
+                <h3>Total Students</h3>
+                <div class="value">1,234</div>
+            </div>
+            <div class="stat-card">
+                <h3>Active Courses</h3>
+                <div class="value">48</div>
+            </div>
+            <div class="stat-card">
+                <h3>Faculty Members</h3>
+                <div class="value">89</div>
+            </div>
+            <div class="stat-card">
+                <h3>Attendance Rate</h3>
+                <div class="value">92%</div>
+            </div>
+        </div>
+
+        <div class="tabs">
+            <div class="tab-buttons">
+                <button class="tab-btn active" data-tab="overview">Overview</button>
+                <button class="tab-btn" data-tab="academic">Academic</button>
+                <button class="tab-btn" data-tab="faculty">Faculty</button>
+                <button class="tab-btn" data-tab="attendance">Attendance</button>
+                <button class="tab-btn" data-tab="communication">Communication</button>
+            </div>
+
+            <div class="tab-content active" id="overview">
+                <div class="content-grid">
+                    <div class="content-card">
+                        <h3>Recent Activities</h3>
+                        <div class="activity-item">
+                            <span>New course created</span>
+                            <small>2 hours ago</small>
+                        </div>
+                        <div class="activity-item">
+                            <span>Faculty meeting scheduled</span>
+                            <small>3 hours ago</small>
+                        </div>
+                        <div class="activity-item">
+                            <span>Attendance reports generated</span>
+                            <small>5 hours ago</small>
+                        </div>
+                    </div>
+                    <div class="content-card">
+                        <h3>Academic Calendar</h3>
+                        <div class="calendar">
+                            <div class="calendar-day">1</div>
+                            <div class="calendar-day">2</div>
+                            <div class="calendar-day">3</div>
+                            <div class="calendar-day">4</div>
+                            <div class="calendar-day">5</div>
+                            <div class="calendar-day">6</div>
+                            <div class="calendar-day">7</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="academic">
+                <div class="content-grid">
+                    <div class="content-card">
+                        <h3>Course Management</h3>
+                        <button class="btn btn-primary">Add New Course</button>
+                        <div class="activity-item">
+                            <span>Advanced Mathematics</span>
+                            <span>48 Students</span>
+                        </div>
+                        <div class="activity-item">
+                            <span>Computer Science</span>
+                            <span>36 Students</span>
+                        </div>
+                    </div>
+                    <div class="content-card">
+                        <h3>Course Progress</h3>
+                        <div class="activity-item">
+                            <span>Advanced Mathematics</span>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <span>Computer Science</span>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 60%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="faculty">
+                <div class="content-grid">
+                    <div class="content-card">
+                        <h3>Faculty Directory</h3>
+                        <button class="btn btn-primary">Add New Faculty</button>
+                        <div class="activity-item">
+                            <span>Dr. John Smith</span>
+                            <span>Mathematics</span>
+                        </div>
+                        <div class="activity-item">
+                            <span>Prof. Sarah Johnson</span>
+                            <span>Science</span>
+                        </div>
+                    </div>
+                    <div class="content-card">
+                        <h3>Workload Distribution</h3>
+                        <div class="activity-item">
+                            <span>Dr. John Smith</span>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <span>Prof. Sarah Johnson</span>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 65%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="attendance">
+                <div class="content-grid">
+                    <div class="content-card">
+                        <h3>Today's Attendance</h3>
+                        <div class="value">92%</div>
+                        <button class="btn btn-secondary">Generate Report</button>
+                    </div>
+                    <div class="content-card">
+                        <h3>Attendance Trends</h3>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 92%"></div>
+                        </div>
+                        <div class="activity-item">
+                            <span>This Week</span>
+                            <span>92%</span>
+                        </div>
+                        <div class="activity-item">
+                            <span>Last Week</span>
+                            <span>89%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="communication">
+                <div class="content-grid">
+                    <div class="content-card">
+                        <h3>Announcements</h3>
+                        <button class="btn btn-primary">New Announcement</button>
+                        <div class="activity-item">
+                            <span>Faculty Meeting</span>
+                            <small>Today at 3 PM</small>
+                        </div>
+                        <div class="activity-item">
+                            <span>Exam Schedule</span>
+                            <small>Posted yesterday</small>
+                        </div>
+                    </div>
+                    <div class="content-card">
+                        <h3>Message Center</h3>
+                        <button class="btn btn-secondary">Send Message</button>
+                        <div class="activity-item">
+                            <span>Parents Meeting</span>
+                            <small>SMS & Email</small>
+                        </div>
+                        <div class="activity-item">
+                            <span>Holiday Notice</span>
+                            <small>In-app</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Tab switching functionality
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons and contents
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+
+                // Add active class to clicked button and corresponding content
+                button.classList.add('active');
+                const tabId = button.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+
+        // Notification badge click handler
+        const notificationBadge = document.querySelector('.notification-badge');
+        notificationBadge.addEventListener('click', () => {
+            alert('Notifications Center: \n- New course created\n- Faculty meeting scheduled\n- Attendance reports generated');
+        });
+
+        // Calendar day click handler
+        const calendarDays = document.querySelectorAll('.calendar-day');
+        calendarDays.forEach(day => {
+            day.addEventListener('click', () => {
+                day.style.background = '#4a90e2';
+                day.style.color = 'white';
+            });
+        });
+
+        // Add hover effect to stat cards
+        const statCards = document.querySelectorAll('.stat-card');
+        statCards.forEach(card => {
+            card.addEventListener('mouseover', () => {
+                card.style.transform = 'translateY(-5px)';
+            });
+            card.addEventListener('mouseout', () => {
+                card.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>
