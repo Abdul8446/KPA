@@ -3,8 +3,8 @@ import { motion } from 'framer-motion';
 import ParallaxCard from './ParallaxCard';
 
 const Hero = () => (
-    <section className=" text-[#003A2E] pt-10 text-center">
-        <div className="container mx-auto rounded-2xl border pt-[10em] px-[8vw] pb-[10em] border-[#ffffffe6]" style={{backgroundImage:'linear-gradient(135deg, #ffffffb3, transparent)'}}>
+    <section className=" text-[#003A2E] pt-10  text-center">
+        <div className="w-[95%] mx-auto rounded-2xl border pt-[10em] lg:px-[6vw] md:px-[6vw] sm:px-[6vw] pb-[10em] border-[#ffffffe6]" style={{backgroundImage:'linear-gradient(135deg, #ffffffb3, transparent)'}}>
             <motion.h1
                 initial={{ opacity: 0, y: -50 }}
                 animate={{ opacity: 1, y: 0 }}

@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef ,useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
 
 const ParallaxCard = () => {
@@ -7,6 +7,18 @@ const ParallaxCard = () => {
     target: containerRef,
     offset: ["start end", "end start"]
   });
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 640); // Check if the screen width is smaller than 640px
+    };
+
+    window.addEventListener('resize', handleResize);
+    handleResize(); // Initialize on component mount
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -15,8 +27,8 @@ const ParallaxCard = () => {
   const mouseYSpring = useSpring(y);
 
   const frameY = useTransform(scrollYProgress, [0, 1], ['5%', '-5%']);
-  const imageY = useTransform(scrollYProgress, [0, 1], ['10%' , '-10%'])
-  const decorY = useTransform(scrollYProgress, [0, 1], ['10%', '-10%']);
+  const imageY = useTransform(scrollYProgress, [0, 1], ['-10%' , '10%'])
+  const frameMobY = useTransform(scrollYProgress, [0, 1], ['10%', '-10%']);
 
   const handleMouseMove = (event) => {
     const bounds = event.currentTarget.getBoundingClientRect();
@@ -34,7 +46,7 @@ const ParallaxCard = () => {
   };
 
   return (
-    <div ref={containerRef} className="relative flex w-full mt-16 items-center justify-center min-h-[calc(100vh-200px)] px-8">
+    <div ref={containerRef} className="relative flex w-full mt-16 items-center justify-center lg:h-[110vh] md:h-[100vh] sm:h-[100vh] h-[50vh] px-4">
       {/* Background decorative elements */}
       <div className="absolute inset-10 bg-[#BB914A] rounded-3xl opacity-50 transition-all duration-300 transform rotate-[-6deg]"
       />
@@ -43,9 +55,9 @@ const ParallaxCard = () => {
       <div className="absolute inset-10 bg-[#BB914A] rounded-3xl opacity-50 transition-all duration-300 transform rotate-[6deg]" 
       />
       <motion.div
-        style={{ y: frameY }}
+        style={{ y: isMobile?frameMobY:frameY }}
         // ref={containerRef}
-        className="relative w-full aspect-[5/4] rounded-3xl overflow-hidden transition duration-1000 ease-in-out"
+        className="relative w-[98%] bg-[yellow] h-[95%] rounded-3xl overflow-hidden transition duration-1000 ease-in-out"
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
       >
@@ -53,25 +65,25 @@ const ParallaxCard = () => {
 
         {/* Main Image */}
         <motion.div 
-          className="relative w-full h-full transition duration-1000"
-          style={{ y: imageY }}
+          className="absolute lg:-inset-x-10 md:-inset-x-10 sm:-inset-x-10 lg:-inset-y-28 md:-inset-y-24 sm:-inset-y-8 -inset-x-10 -inset-y-16 bg-black transition duration-1000"
+          style={{ y: isMobile?'':imageY }}
         >
-          <motion.div
-            className="absolute -top-32 -left-32 transform -translate-x-1/2 -translate-y-1/2 w-[130%] h-[130%] object-cover rounded-3xl"
+          <motion.img
+            className="w-full h-full object-cover rounded-3xl"
+            src='https://cdn.prod.website-files.com/66cdea42c062fe4a0348b29d/66cdea42c062fe4a0348b415_pexels-charlotte-may-5966011-p-1600.jpg'
             style={{
               x: mouseXSpring,
               y: mouseYSpring,
-              backgroundImage:'url(https://cdn.prod.website-files.com/66cdea42c062fe4a0348b29d/66cdea42c062fe4a0348b415_pexels-charlotte-may-5966011-p-1600.jpg)'
-            }}
+            }}  
           />
         </motion.div>
 
         
       </motion.div>
       <motion.div
-        style={{ y: frameY }}
+        style={{ y: isMobile?frameMobY:frameY }}
         // ref={containerRef}
-        className="absolute w-full aspect-[4/3] rounded-3xl transition duration-1000 ease-in-out"
+        className="absolute w-[98%] h-[95%] rounded-3xl transition duration-1000 ease-in-out"
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
       >
@@ -81,7 +93,7 @@ const ParallaxCard = () => {
             className="absolute inset-0 pointer-events-none transition"
           >
             {/* Purple Badge */}
-            <div className="flex absolute bottom-14 bg-[#692eaa] text-white px-6 py-6"
+            <div className="flex absolute bottom-28 -left-7 bg-[#692eaa] text-white px-6 py-6"
               style={{borderRadius:'22% 7% 22% 22% / 50% 7% 50% 50%'}}
             >
               <div>
@@ -95,16 +107,16 @@ const ParallaxCard = () => {
             </div>
 
             {/* Green Badge */}
-            <div className="absolute flex right-0 top-14 bg-emerald-400 text-[#2A4965] px-6 py-4 rounded-full">
+            <div className="absolute flex -right-7 top-14 bg-emerald-400 text-[#2A4965] px-4 py-4 rounded-full">
               <img className='w-[3rem] h-[3rem] mr-5' src="https://cdn.prod.website-files.com/66cdea42c062fe4a0348b29d/66cdea42c062fe4a0348b49e_icon-element-2.svg" alt="" />
-              <div>
+              <div className='mr-2'>
                 <p className="text-3xl font-bold">24</p>
                 <p className="text-xs">Courses</p>
               </div>
             </div>
 
             {/* Decorative Flower */}
-            <div className="absolute -right-8 -bottom-8 w-32 h-32 opacity-20">
+            <div className="absolute -right-8 -bottom-12 w-32 h-32 opacity-20">
               <img src=" https://cdn.prod.website-files.com/66cdea42c062fe4a0348b29d/66cdea42c062fe4a0348b49e_icon-element-2.svg" alt="" />
             </div>
           </motion.div>
