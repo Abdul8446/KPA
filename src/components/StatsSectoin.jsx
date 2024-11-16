@@ -5,7 +5,7 @@ import { useInView } from 'framer-motion';
 const StatsSection = () => {
   return (
     <section className=" text-[#003A2E] pt-10 text-center">
-        <div className="container mx-auto min-h-[60vh] bg-[#fff9] px-8 py-16 rounded-xl relative overflow-hidden border border-white">
+        <div className="w-[95%] mx-auto min-h-[60vh] bg-[#fff9] px-8 py-16 rounded-xl relative overflow-hidden border border-white">
         {/* Decorative elements */}
         <div className="absolute top-8 left-8 w-8 h-8 rounded-full bg-yellow-200/80" />
         <div className="absolute top-24 left-24 w-4 h-4 rounded-full bg-purple-300/60" />

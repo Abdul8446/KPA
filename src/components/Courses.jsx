@@ -4,7 +4,7 @@ import CourseCard from './CourseCard';
 
 const Courses = () => (
     <section className="text-[#003A2E] py-10 text-center">
-        <div className="container mx-auto bg-[#fff9] rounded-2xl p-16 border border-white">
+        <div className="w-[95%] mx-auto bg-[#fff9] rounded-2xl p-16 border border-white">
             <h2 className="text-3xl text-[#003A2E] mb-8">Empower your skills</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16">
                 {[...Array(6)].map((_, i) => (

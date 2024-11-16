@@ -4,6 +4,7 @@ import './App.css'
 import Home from './pages/Home';
 import { AnimationProvider } from './contexts/AnimationContext';
 import Loader from './components/Loader';
+import { MobileProvider } from './contexts/MobileContext';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -11,6 +12,7 @@ function App() {
   return (
     <>
       <AnimationProvider>
+      <MobileProvider>
         {/* <Loader/> */}
         <Router>
           {/* <Navbar />  */}
@@ -19,6 +21,7 @@ function App() {
             {/* <Route path="/about" element={<About />} /> */}
           </Routes>
         </Router>
+      </MobileProvider>  
       </AnimationProvider>
     </>
   )
