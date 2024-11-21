@@ -3,443 +3,287 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Educational Platform</title>
+    <title>Thema UI Design</title>
+    <link rel="stylesheet" href="styles.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
-
         body {
-            background-color: #E9E3D4;
-        }
-        
-        body section, body header {
-            z-index: 1;
-            position: relative;
-        }
+    font-family: Arial, sans-serif;
+    background-color: #fffbe9;
+    margin: 0;
+    padding: 0;
+}
 
-        .background-attachment {
-            width: 100vw;
-            height: 100vh;
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 0;
-            background-blend-mode: soft-light;
-            background-image: radial-gradient(at 40.68712550744722% 42.63164354285427%, hsla(0, 0%, 100%, 1) 0%, hsla(0, 0%, 100%, 0) 100%), radial-gradient(at 52.46011534703716% 92.82447372152953%, hsla(167.58620689655172, 100%, 11.372549019607844%, 1) 0%, hsla(167.58620689655172, 100%, 11.372549019607844%, 0) 100%), radial-gradient(at 93.27639606893506% 40.41153446077854%, hsla(37.69911504424778, 45.38152610441767%, 51.17647058823529%, 1) 0%, hsla(37.69911504424778, 45.38152610441767%, 51.17647058823529%, 0) 100%), radial-gradient(at 33.52456220291353% 99.12708010570412%, hsla(0, 0%, 100%, 1) 0%, hsla(0, 0%, 100%, 0) 100%), radial-gradient(at 40.62890111772346% 86.50493515205888%, hsla(167.58620689655172, 100%, 11.372549019607844%, 1) 0%, hsla(167.58620689655172, 100%, 11.372549019607844%, 0) 100%), radial-gradient(at 71.17985188597066% 38.968679603659176%, hsla(37.69911504424778, 45.38152610441767%, 51.17647058823529%, 1) 0%, hsla(37.69911504424778, 45.38152610441767%, 51.17647058823529%, 0) 100%), radial-gradient(at 33.662210898137054% 16.852986325176246%, hsla(0, 0%, 100%, 1) 0%, hsla(0, 0%, 100%, 0) 100%);
-        }
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #fff5db;
+    border-bottom: 1px solid #e8e8e8;
+    position: relative;
+}
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+.logo {
+    display: flex;
+    align-items: center;
+}
 
-        /* Header Styles */
-        header {
-            background-color: #003A2E;
-            padding: 1rem 0;
-            color: #E9E3D4;
-        }
+.brand {
+    font-size: 1.5rem;
+    color: #6f2c91; /* Purple color */
+    font-weight: bold;
+}
 
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+.home-badge {
+    background-color: #f5b645; /* Yellow color */
+    color: white;
+    padding: 4px 8px;
+    margin-left: 8px;
+    border-radius: 5px;
+    font-size: 0.85rem;
+}
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
+.menu {
+    position: relative;
+}
 
-        .nav-right {
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-        }
+.menu-icon {
+    font-size: 1.5rem;
+}
 
-        button {
-            background: none;
-            border: none;
-            color: #E9E3D4;
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
+.dropdown-btn {
+    background-color: #f5b645;
+    color: #6f2c91;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
 
-        button:hover {
-            background-color: #BB914A;
-        }
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    padding: 15px;
+    border-radius: 10px;
+    top: 40px;
+    z-index: 1;
+}
 
-        .search-input {
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            border: none;
-            background-color: #E9E3D4;
-            color: #003A2E;
-        }
+.menu:hover .dropdown-content {
+    display: block;
+}
 
-        /* Hero Section */
-        .hero {
-            background-color: #003A2E;
-            color: #E9E3D4;
-            padding: 4rem 0;
-        }
+.course-categories {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 10px;
+}
 
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            line-height: 1.2;
-        }
+.category {
+    background-color: #f9f4f4;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    color: #6f2c91;
+    font-size: 0.9rem;
+}
 
-        .highlight {
-            color: #BB914A;
-        }
+.all-courses-btn {
+    background-color: #f5b645;
+    color: #6f2c91;
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    cursor: pointer;
+}
 
-        .cta-button {
-            background-color: #BB914A;
-            padding: 1rem 2rem;
-            margin-top: 2rem;
-            display: inline-block;
-        }
+.new-badge {
+    background-color: #6f2c91;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 5px;
+    font-size: 0.75rem;
+}
 
-        /* Stats Section */
-        .stats {
-            padding: 4rem 0;
-        }
+.search-bar {
+    display: flex;
+    align-items: center;
+    border: 1px solid #6f2c91; /* Purple border */
+    border-radius: 20px;
+    padding: 5px 10px;
+    flex-grow: 1;
+    max-width: 400px;
+}
 
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
+.search-bar input {
+    border: none;
+    outline: none;
+    flex-grow: 1;
+    font-size: 1rem;
+    color: #6f2c91;
+}
 
-        .stat-card {
-            background-color: #003A2E;
-            color: #E9E3D4;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
+.search-bar button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #6f2c91;
+}
 
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: #BB914A;
-        }
+.links {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    color: #6f2c91; /* Purple color */
+    font-size: 1rem;
+}
 
-        /* Courses Section */
-        .courses {
-            padding: 4rem 0;
-        }
+.links a {
+    text-decoration: none;
+    color: #6f2c91;
+}
 
-        .section-title {
-            color: #003A2E;
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
+.icons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
 
-        .courses-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-top: 2rem;
-        }
+.icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    border: 1px solid #6f2c91;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+}
 
-        .course-card {
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-        }
+.yellow-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #f5b645;
+    border-radius: 50%;
+}
 
-        .course-card:hover {
-            transform: translateY(-5px);
-        }
+.notification-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: #f5b645;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 0.75rem;
+}
 
-        .course-image {
-            height: 200px;
-            background-color: rgba(0, 58, 46, 0.1);
-        }
+.hero-section {
+    text-align: center;
+    margin: 50px 0;
+}
 
-        .course-content {
-            padding: 1rem;
-        }
+.hero-section h1 {
+    font-size: 3rem;
+    color: #6f2c91;
+    line-height: 1.4;
+}
 
-        .course-title {
-            color: #003A2E;
-            margin-bottom: 0.5rem;
-        }
+.highlight {
+    background-color: #f5b645;
+    padding: 0 5px;
+    border-radius: 5px;
+}
 
-        /* Features Section */
-        .features {
-            background-color: #003A2E;
-            color: #E9E3D4;
-            padding: 4rem 0;
-        }
+.hero-section p {
+    font-size: 1.25rem;
+    color: #6f2c91;
+    margin-bottom: 20px;
+}
 
-        .features-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-        }
+.discover-btn {
+    background-color: #f5b645;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
 
-        .feature-card {
-            background-color: #BB914A;
-            padding: 2rem;
-            border-radius: 8px;
-        }
-
-        .features-list {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-        }
-
-        .feature-item h4 {
-            margin-bottom: 0.5rem;
-        }
-
-        /* Community Section */
-        .community {
-            padding: 4rem 0;
-            text-align: center;
-        }
-
-        .community-grid {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-
-        .community-image {
-            aspect-ratio: 1;
-            background-color: rgba(0, 58, 46, 0.1);
-            border-radius: 8px;
-        }
-
-        @media (max-width: 768px) {
-            .stats-grid,
-            .courses-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .features-grid,
-            .features-list {
-                grid-template-columns: 1fr;
-            }
-
-            .community-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-        }
-        .events-calendar {
-            padding: 4rem 0;
-        }
-
-        .events-calendar .section-title {
-            color: #003A2E;
-            font-size: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .event-card {
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .event-card .event-title {
-            color: #003A2E;
-            font-size: 1.25rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .event-card .event-details {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-
-        .event-card .event-date,
-        .event-card .event-type {
-            color: #555;
-            font-size: 0.875rem;
-        }
-
-        .event-card .event-description {
-            color: #555;
-            font-size: 0.875rem;
-        }
     </style>
 </head>
 <body>
-    <div class="background-attachment">
-
+    <div class="navbar">
+        <div class="logo">
+            <span class="brand">Thema</span>
+            <span class="home-badge">Home</span>
+        </div>
+        <div class="menu">
+            <button class="dropdown-btn">
+                <span class="menu-icon">•••</span>
+                <span class="menu-text">Courses</span>
+            </button>
+            <div class="dropdown-content">
+                <div class="course-categories">
+                    <div class="category">😊 General</div>
+                    <div class="category">👩‍🎓 Students</div>
+                    <div class="category">🧒 Kids</div>
+                    <div class="category">👵 Seniors</div>
+                </div>
+                <button class="all-courses-btn">
+                    <span>All courses</span>
+                    <span class="new-badge">New</span>
+                </button>
+            </div>
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search courses, or instructors">
+            <button type="submit">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001l3.85 3.85a1 1 0 0 0 1.415-1.415l-3.85-3.85zm-5.708 1.14a5.5 5.5 0 1 1 7.778-7.778 5.5 5.5 0 0 1-7.778 7.778z"/>
+                </svg>
+            </button>
+        </div>
+        <div class="links">
+            <a href="#">Overview</a>
+            <a href="#">About</a>
+        </div>
+        <div class="icons">
+            <div class="icon">
+                <div class="yellow-dot"></div>
+            </div>
+            <div class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-share" viewBox="0 0 16 16">
+                    <path d="M13.5 1a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm-11 11a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0zm8-5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z"/>
+                </svg>
+            </div>
+            <div class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
+                    <path d="M8 1a2 2 0 0 0-2 2v1H3.5A1.5 1.5 0 0 0 2 5.5v8A1.5 1.5 0 0 0 3.5 15h9A1.5 1.5 0 0 0 14 13.5v-8A1.5 1.5 0 0 0 12.5 4H10V3a2 2 0 0 0-2-2zM6 3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v1H6V3zm-1 3v7h7V6H5z"/>
+                </svg>
+                <span class="notification-badge">0</span>
+            </div>
+            <div class="icon more-options">•••</div>
+        </div>
     </div>
-    <header>
-        <div class="container">
-            <nav>
-                <div class="logo">Thema</div>
-                <div class="nav-right">
-                    <button>All Courses</button>
-                    <input type="search" placeholder="Search courses or instructors" class="search-input">
-                </div>
-            </nav>
-        </div>
-    </header>
-
-    <section class="hero">
-        <div class="container">
-            <h1>
-                Shape your <span class="highlight">success.</span><br>
-                Explore courses that<br>
-                <span class="highlight">elevate</span> your life.
-            </h1>
-            <p>Future-proof your career. Master skills that matter today.</p>
-            <button class="cta-button">Browse →</button>
-        </div>
-    </section>
-
-    <section class="stats">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-number">5K</div>
-                    <p>Satisfied students</p>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">20</div>
-                    <p>Years of experience</p>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">16</div>
-                    <p>Learning programs</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="courses">
-        <div class="container">
-            <h2 class="section-title">Empower your skills</h2>
-            <p>Discover your potential with courses designed to inspire and empower.<br>
-               Start your journey to success with us today!</p>
-            
-            <div class="courses-grid">
-                <!-- Repeat this card 6 times -->
-                <div class="course-card">
-                    <div class="course-image"></div>
-                    <div class="course-content">
-                        <h3 class="course-title">Course Title</h3>
-                        <p>Course description goes here</p>
-                    </div>
-                </div>
-                <!-- Repeated cards... -->
-                <div class="course-card">
-                    <div class="course-image"></div>
-                    <div class="course-content">
-                        <h3 class="course-title">Course Title</h3>
-                        <p>Course description goes here</p>
-                    </div>
-                </div>
-                <div class="course-card">
-                    <div class="course-image"></div>
-                    <div class="course-content">
-                        <h3 class="course-title">Course Title</h3>
-                        <p>Course description goes here</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="features">
-        <div class="container">
-            <div class="features-grid">
-                <div class="feature-card">
-                    <h3>Dive into a world where knowledge and possibility converge</h3>
-                    <p>To create a brighter future for you.</p>
-                </div>
-                <div class="features-list">
-                    <div class="feature-item">
-                        <h4>Immersive Learning</h4>
-                        <p>We leverage technology to create dynamic and interactive learning</p>
-                    </div>
-                    <div class="feature-item">
-                        <h4>Unique Teaching</h4>
-                        <p>We blend modern with traditional teaching for a unique learning experience</p>
-                    </div>
-                    <div class="feature-item">
-                        <h4>Connect Communities</h4>
-                        <p>Building bridges between students, instructors, and industries</p>
-                    </div>
-                    <div class="feature-item">
-                        <h4>Lifelong Learning</h4>
-                        <p>Our courses are designed to be accessible, engaging and impactful</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="community">
-        <div class="container">
-            <h2 class="section-title">
-                Our Community: <span class="highlight">Diverse Learners,</span><br>
-                <span class="highlight">Shared Passions</span>
-            </h2>
-            <div class="community-grid">
-                <div class="community-image"></div>
-                <div class="community-image"></div>
-                <div class="community-image"></div>
-                <div class="community-image"></div>
-                <div class="community-image"></div>
-            </div>
-        </div>
-    </section>
-    <section class="events-calendar">
-        <div class="container">
-            <h2 class="section-title">Upcoming Events</h2>
-            <div class="event-card">
-                <h3 class="event-title">Career Day Webinar Series</h3>
-                <div class="event-details">
-                    <div class="event-date">June 15, 2024</div>
-                    <div class="event-type">Webinar</div>
-                </div>
-                <p class="event-description">Gain career insights from industry experts. Explore various paths and network in our Career Day Webinar Series.</p>
-            </div>
-            <div class="event-card">
-                <h3 class="event-title">Virtual Open House</h3>
-                <div class="event-details">
-                    <div class="event-date">August 1, 2024</div>
-                    <div class="event-type">Virtual Event</div>
-                </div>
-                <p class="event-description">Explore the platform and learn more about our virtual offerings and features.</p>
-            </div>
-            <div class="event-card">
-                <h3 class="event-title">Coding Marathon Challenge</h3>
-                <div class="event-details">
-                    <div class="event-date">September 14, 2024</div>
-                    <div class="event-type">Competition</div>
-                </div>
-                <p class="event-description">Test your coding skills and compete in our Coding Marathon Challenge. Compete, learn, and win exciting prizes!</p>
-            </div>
-        </div>
-    </section>
+    <div class="hero-section">
+        <h1>Your <span class="highlight">success</span>. The courses that <br> change your <span class="highlight">life</span>.</h1>
+        <p>Future-proof your career. Master skills that matter today.</p>
+        <button class="discover-btn">Discover <span>↓</span></button>
+    </div>
 </body>
 </html>

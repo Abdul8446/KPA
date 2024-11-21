@@ -3,18 +3,16 @@ import styled from 'styled-components';
 import {motion} from 'framer-motion'
 
 const Faculty = (props) => {
-    const { img, disc } = props.item;
+    const { img, disc, name } = props.item;
   return (
     <Container className='project'>
-        <img src={img} className='relative z-10 rounded-2xl transition-all duration-1000' alt="project" />
+        <img src={img} className='relative z-10 rounded-2xl transition-all aspect-[3/4] w-[60%] duration-1000' alt="project" />
         <div className="disc">
-            <h1>Description</h1>
-            <p>{disc}
-            <a href="#">demo</a>
-            </p>
+            <h1 className='lato-regular'>{name}</h1>
+            <p className='merriweather-light'>{disc}</p>
         </div>
-        <div className='background-frame-1 absolute left-1/2 -translate-x-1/2 inset-0 h-[74%] w-[60%]  bg-[#003A2E] opacity-70 transform -rotate-3 rounded-2xl scale-x-[1.2] -translate-y-6 z-0'></div>
-        <div className='background-frame-2 absolute left-1/2 -translate-x-1/2 inset-0 h-[74%] w-[60%]  bg-[#003A2E] opacity-20 transform -rotate-3 rounded-2xl scale-x-[1.2] -translate-y-6 -z-10'></div>
+        <div className='background-frame-1 absolute left-1/2 -translate-x-1/2 inset-0 aspect-[3/4] w-[60%]  bg-[#003A2E] opacity-70 transform -rotate-3 rounded-2xl scale-[1.2] z-0'></div>
+        <div className='background-frame-2 absolute left-1/2 -translate-x-1/2 inset-0 aspect-[3/4] w-[60%]  bg-[#003A2E] opacity-20 transform -rotate-3 rounded-2xl scale-[1.2] -z-10'></div>
     </Container>
   )
 }
@@ -28,8 +26,9 @@ const Container = styled.div`
     position: relative;
     // overflow: hidden;
     img{
-        width: 60%;
-        height: auto;
+
+        // width: 60%;
+        // height: auto;
         object-fit: cover;
         transition: transform 400ms ease-in-out;
     }

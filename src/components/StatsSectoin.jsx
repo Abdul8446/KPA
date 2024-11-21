@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 
-const StatsSection = () => {
+const StatsSection = forwardRef((props, ref) => {
   return (
-    <section className=" text-[#003A2E] pt-10 text-center">
+    <section ref={ref} className=" text-[#003A2E] pt-10 text-center">
         <div className="w-[95%] mx-auto min-h-[60vh] bg-[#fff9] px-8 py-16 rounded-xl relative overflow-hidden border border-white">
         {/* Decorative elements */}
         <div className="absolute top-8 left-8 w-8 h-8 rounded-full bg-yellow-200/80" />
@@ -17,7 +17,7 @@ const StatsSection = () => {
 
             <div className=" lg:grid-cols-4 gap-6 mt-12 grid grid-cols-2 gap-x-16 gap-y-16 w-full">
 
-            <div className='flex items-center'>
+            <div className='flex items-center lato-regular'>
                 <h2 className="text-[#003A2E] text-2xl md:text-3xl font-bold mb-8">
                 By the numbers:
                 <br />
@@ -63,7 +63,7 @@ const StatsSection = () => {
         </div>
     </section>
   );
-};
+})
 
 const StatCard = ({ number, label, label2, bgColor, mainRotation, backgroundRotation }) => {
   const ref = React.useRef(null);
@@ -78,13 +78,13 @@ const StatCard = ({ number, label, label2, bgColor, mainRotation, backgroundRota
       className={`${bgColor} rounded-2xl p-6 shadow-sm relative z-10`}
     >
       {/* <div className={`absolute inset-0 bg-[#BB914A] rounded-2xl transform rotate-[${backgroundRotation}deg]`}></div>   */}
-      <div className="text-4xl md:text-5xl font-bold text-[#003A2E] mb-2">
+      <div className="text-4xl md:text-5xl font-bold text-[#003A2E] mb-2 lato-regular">
         {number}
       </div>
-      <div className="text-[#003A2E] text-lg">
+      <div className="text-[#003A2E] text-lg merriweather-light">
         {label}
       </div>
-      <div className="text-[#003A2E] text-lg">
+      <div className="text-[#003A2E] text-lg merriweather-light">
         {label2}
       </div>
     </motion.div>

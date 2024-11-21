@@ -1,7 +1,9 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
+import { useMobile } from '../contexts/MobileContext';
 
 const CourseCard = () => {
+  const {isMobile} = useMobile() 
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -24,7 +26,7 @@ const CourseCard = () => {
   const mouseYSpring = useSpring(y);
 
   const frameY = useTransform(scrollYProgress, [0, 1], ['5%', '-5%']);
-  const imageY = useTransform(scrollYProgress, [0, 1], ['10%' , '-10%'])
+  const imageY = useTransform(scrollYProgress, [0, 1], ['-10%' , '10%'])
   const decorY = useTransform(scrollYProgress, [0, 1], ['10%', '-10%']);
 
   const handleMouseMove = (event) => {
@@ -43,10 +45,10 @@ const CourseCard = () => {
   };
 
   return (
-    <div ref={containerRef} className="relative flex w-full h-72 items-center justify-center ">
+    <div ref={containerRef} className={`relative flex ${isMobile?'aspect-[5/3]':'lg:aspect-square md:aspect-square sm:aspect-[5/3]'} w-full items-center justify-center `}>
       {/* Background decorative elements */}
       <motion.div 
-        className="absolute inset-0 bg-[#BB914A] rounded-3xl opacity-50 transition-all duration-300 transform rotate-[-4deg]"
+        className="absolute inset-0 bg-[#BB914A] rounded-3xl opacity-50 transition-all duration-1000 transform rotate-[-4deg]"
       />
       
       {/* Foreground decorative element */}
@@ -54,15 +56,21 @@ const CourseCard = () => {
         variants={{
             hover:{rotate:-8}
         }}
+        transition={{
+          duration: .5, // Make animation slower (1.5 seconds)
+          ease: 'easeInOut', // Use a smoother easing
+        }}
         className="absolute inset-0 bg-[#BB914A] rounded-3xl opacity-25 transform rotate-[-4deg]" 
       />
       <motion.div
         variants={{
             hover: { rotate:2 },
         }}
-        // style={{ y: frameY }}
-        // ref={containerRef}
-        className="relative w-full h-full rounded-3xl bg-[red] overflow-hidden"
+        transition={{
+          duration: .5, // Make animation slower (1.5 seconds)
+          ease: 'easeInOut', // Use a smoother easing
+        }}
+        className={`relative w-full h-full ${isMobile?'rounded-xl':'rounded-3xl'} overflow-hidden`}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
       >
@@ -70,7 +78,7 @@ const CourseCard = () => {
 
         {/* Main Image */}
         <motion.div 
-          className="relative w-[130%] h-[130%] bg-[yellow] transition duration-1000 rounded-3xl right-12 bottom-12"
+          className="absolute -inset-10 transition duration-1000"
           style={{ y: imageY }}
         >
           <img

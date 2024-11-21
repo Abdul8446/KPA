@@ -55,7 +55,7 @@
 // export default Home;
 
 // App.js
-import React from 'react';
+import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
 import Hero from '../components/Hero';
 import Header from '../components/Header';
@@ -71,17 +71,23 @@ import Footer from '../components/Footer';
 import StatsSection from '../components/StatsSectoin';
 
 function Home() {
+  const statsRef = useRef(null);
+
+  const scrollToStats = () => {
+    statsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
     return (
       <div className="bg-[#E9E3D4]">
             <div className="background-attachment"></div>
             <Header />
-            <Hero />
-            <StatsSection />
+            <Hero onScrollToStats={scrollToStats}/>
+            <StatsSection ref={statsRef}/>
           {/* <SmoothScroll> */}
             <Courses />
             <Features />
             <Faculties />
-            <EventsCalendar />
+            {/* <EventsCalendar /> */}
             <Testimonials /> 
             <LatestReads/>
             <NewsletterSignup/>

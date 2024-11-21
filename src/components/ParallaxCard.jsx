@@ -127,8 +127,8 @@ const ParallaxCard = () => {
             className="absolute inset-0 pointer-events-none transition"
           >
             {/* Purple Badge */}
-            <div className={`flex absolute ${isMobile?'scale-[.5] bottom-20 -translate-x-1/4':'scale-100 bottom-28 -left-7'} bg-[#692eaa] text-white px-6 py-6`}
-              style={{borderRadius:'22% 7% 22% 22% / 50% 7% 50% 50%'}}
+            <div className={`flex absolute ${isMobile?'scale-[.6] bottom-20 -translate-x-11 rounded-xl':'scale-100 bottom-28 -left-7'} bg-[#692eaa] text-white px-6 py-6`}
+              style={{borderRadius:isMobile?'':'22% 7% 22% 22% / 50% 7% 50% 50%'}}
             >
               <div>
                 <h1 className="text-3xl font-bold">5K</h1>
@@ -141,7 +141,7 @@ const ParallaxCard = () => {
             </div>
 
             {/* Green Badge */}
-            <div className={`absolute flex -right-7 top-14 ${isMobile?'scale-[.5] translate-x-2':'scale-100'} bg-emerald-400 text-[#2A4965] px-4 py-4 rounded-full`}>
+            <div className={`absolute flex -right-7 top-14 ${isMobile?'scale-[.6] rounded-xl':'scale-100 rounded-full'} bg-emerald-400 text-[#2A4965] px-4 py-4`}>
               <img className='w-[3rem] h-[3rem] mr-5' src="https://cdn.prod.website-files.com/66cdea42c062fe4a0348b29d/66cdea42c062fe4a0348b49e_icon-element-2.svg" alt="" />
               <div className='mr-2'>
                 <p className="text-3xl font-bold">24</p>

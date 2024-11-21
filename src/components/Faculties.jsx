@@ -5,12 +5,12 @@ import { Zoom } from 'react-awesome-reveal';
 
 const Faculties = () => {
   return (
-    <Container id='project' className='z-10'>
+    <Container id='project' className='z-10 py-10 xl:pt-24'>
+        <h1 className='text-[#BB914A] lato-bold-italic  text-[5rem] md:text-[8rem] lg:text-[10rem] xl:text-[13rem] xl:absolute xl:top-1/2 xl:left-1/2 xl:-translate-y-[70%] xl:-translate-x-1/2 xl:text-white'>Faculties</h1>
         <Slide 
         // data-scroll data-scroll-speed='3'
         >
             <SliderComp/>
-            <h1 className='absolute z-0 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-[80%] text-[white] anton-regular text-[13rem]'>Faculties</h1>
         </Slide>
     </Container>
   )
@@ -21,11 +21,12 @@ export default Faculties;
 const Container = styled.div`
     width: 100%;
     // max-width: 1280px;
-    // min-height: 100vh;
+    // min-height: 80vh;
     margin: 0 auto;
-    padding: 10rem 0;
+    // padding: 10rem 0;
     text-align: center;
     position: relative;
+    overflow: hidden;
     @media(max-width: 840px){
         width: 100%;
     }

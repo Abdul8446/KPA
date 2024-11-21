@@ -30,11 +30,11 @@ const Testimonials = () => {
 
   return (
     <section className='pt-10'>
-        <div className="container rounded-2xl border bg-[#fff9] border-white mx-auto px-4 py-16 relative">
+        <div className="w-[95%] rounded-2xl border bg-[#fff9] border-white mx-auto px-4 py-16 relative">
         <motion.h1 
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-4xl font-bold text-[#003A2E] text-center mb-16"
+            className="lato-regular text-4xl font-bold text-[#003A2E] text-center mb-16"
         >
             Hear From Our Learners
         </motion.h1>
@@ -59,7 +59,7 @@ const Testimonials = () => {
                     transition={{ duration: 0.5 }}
                 />
                 <motion.p
-                    className="text-center text-lg text-[#BB914A] max-w-2xl mb-4"
+                    className="text-center text-lg text-[#BB914A] max-w-2xl mb-4 merriweather-light"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.2 }}
@@ -67,7 +67,7 @@ const Testimonials = () => {
                     {testimonials[currentIndex].text}
                 </motion.p>
                 <motion.p
-                    className="text-[#003A2E] font-medium"
+                    className="text-[#003A2E] font-medium lato-regular"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.3 }}
