@@ -6,7 +6,7 @@ import { Zoom } from 'react-awesome-reveal';
 const Faculties = () => {
   return (
     <Container id='project' className='z-10 py-10 xl:pt-24'>
-        <h1 className='text-[#BB914A] lato-bold-italic  text-[5rem] md:text-[8rem] lg:text-[10rem] xl:text-[13rem] xl:absolute xl:top-1/2 xl:left-1/2 xl:-translate-y-[70%] xl:-translate-x-1/2 xl:text-white'>Faculties</h1>
+        <h1 className='text-[#BB914A] lato-bold-italic  text-[5rem] md:text-[8rem] lg:text-[10rem] xl:text-[13rem] xl:absolute xl:top-1/2 xl:left-1/2 xl:-translate-y-[70%] xl:-translate-x-1/2 xl:text-white whitespace-nowrap'>Our Team</h1>
         <Slide 
         // data-scroll data-scroll-speed='3'
         >

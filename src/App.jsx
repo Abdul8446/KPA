@@ -5,6 +5,9 @@ import Home from './pages/Home';
 import { AnimationProvider } from './contexts/AnimationContext';
 import Loader from './components/Loader';
 import { MobileProvider } from './contexts/MobileContext';
+import Layout from './components/Layout';
+import CoursesPage from './pages/CoursesPage';
+import { CategoryProvider } from './contexts/CategoryContext';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -13,14 +16,17 @@ function App() {
     <>
       <AnimationProvider>
       <MobileProvider>
+      <CategoryProvider>
         {/* <Loader/> */}
         <Router>
-          {/* <Navbar />  */}
-          <Routes>
-            <Route path="/" element={<Home />} />
-            {/* <Route path="/about" element={<About />} /> */}
-          </Routes>
+          <Layout>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/courses" element={<CoursesPage />} />
+            </Routes>
+          </Layout>
         </Router>
+      </CategoryProvider>  
       </MobileProvider>  
       </AnimationProvider>
     </>

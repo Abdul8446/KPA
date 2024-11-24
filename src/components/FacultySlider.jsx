@@ -5,74 +5,91 @@ import styled from 'styled-components';
 import Faculty from './Faculty';
 import rightArrow from '../assets/images/rightarrow.png'
 import playCursor from '../assets/images/playcursor.webp'
+import sumiyaTeam from '../assets/images/sumiya-team.png'
+import rahulTeam from '../assets/images/rahul-team.png'
+import rinshithaTeam from '../assets/images/rinshitha-team.png'
+import muhsinaTeam from '../assets/images/muhsina-team.png'
+import bheemaTeam from '../assets/images/bheema-team.png'
+import lasminaTeam from '../assets/images/lasmina-team.png'
+import deepikaTeam from '../assets/images/deepika-team.png'
+import shirineTeam from '../assets/images/shirine-team.png'
+import fazeelathTeam from '../assets/images/fazeelath-team.png'
+import raniaTeam from '../assets/images/rania-team.png'
+import badhushaTeam from '../assets/images/badhusha-team.png'
+import zamilTeam from '../assets/images/zamil-team.png'
+import jasimTeam from '../assets/images/jasim-team.png'
 
 let data = [
     {
-        name: 'Hussain Al Jassmi',
-        disc: 'Innovative Arabian and Emirati Singer and Composer',
-        img: 'https://apim.dct.gov.ae/SCD//media/ldhhwnxi/hussain-al-jassmi.jpg',
-      },
-      {
-        name: 'Magdalena Moreno Mujica',
-        disc: 'Executive Director, IFACCA',
-        img: 'https://apim.dct.gov.ae/SCD//media/qrwl0ehd/magdalena-moreno-mujica.jpg',
-      },
-      {
-        name: 'Dr. Ridha Moumni',
-        disc: 'Chairman, Christie’s Middle East and North Africa',
-        img: 'https://apim.dct.gov.ae/SCD//media/qikhxdft/dr-ridha-moumni.jpg',
-      },
-      {
-        name: 'Sandhini Poddar',
-        title: 'Adjunct Curator, Guggenheim Abu Dhabi',
-        img: 'https://apim.dct.gov.ae/SCD//media/bwonp42g/sandhini-poddar.jpg',
-      },
-      {
-        name: 'Alexandra Munroe',
-        title: 'Senior Curator',
-        img: 'https://apim.dct.gov.ae/SCD//media/r12huqel/alexandra-munroe.jpg',
-      },
-      {
-        name: 'Steve Harvey',
-        disc: 'Global philanthropist, investor and award-winning entertainer',
-        img: 'https://apim.dct.gov.ae/SCD//media/qzrhibm4/steve-harvey.jpg',
-      },
-      {
-        name: 'Harvey Mason Jr',
-        disc: 'CEO, Recording Academy®',
-        img: 'https://apim.dct.gov.ae/SCD//media/p2danjyb/harvey-mason-jr.jpg',
-      },
-      {
-        name: 'Abeer Seikaly',
-        disc: 'Architect and Founder, Studio Abeer Seikaly',
-        img: 'https://apim.dct.gov.ae/SCD//media/jp0jaah4/abeer-seikaly.jpg',
-      },
-      {
-        name: 'Ahmad Abdulrahman Bukhash',
-        disc: 'Chief Architect and Founder, Archidentity',
-        img: 'https://apim.dct.gov.ae/SCD//media/ujlisajz/ahmad-abdulrahman-bukhash.jpg',
-      },
-      {
-        name: 'Huda Alkhamis-Kanoo',
-        disc: 'Founder, Abu Dhabi Music & Arts Foundation (ADMAF)',
-        img: 'https://apim.dct.gov.ae/SCD//media/czchrrrd/huda-alkhamis-kanoo.jpg',
-      },
-      {
-        name: 'Gael Hedding',
-        disc: 'Director, Berklee Abu Dhabi',
-        img: 'https://apim.dct.gov.ae/SCD//media/tftneehy/gael-hedding.jpg',
-      },
-      {
-        name: 'Dr. Pradeep Sharma',
-        title: 'Director of Arts, Culture and Heritage, Salama bint Hamdan Al Nahyan Foundation',
-        img: 'https://apim.dct.gov.ae/SCD//media/fv0fetqc/dr-pradeep-sharma.jpg',
-      },
-      {
-        name: 'Maria Sharapova',
-        disc: 'World-Class Tennis Superstar, Investor and Entrepreneur',
-        img: 'https://apim.dct.gov.ae/SCD//media/mdzhnr5t/maria-sharapova.jpg',
-      }
-    
+      name: 'Sumiya Yusaf',
+      disc: 'Director of academic & training',
+      img: sumiyaTeam,
+    },
+    {
+      name: 'Rahul Govind',
+      disc: 'Manager, operations',
+      img: rahulTeam,
+    },
+    {
+      name: 'Rinshitha Ali',
+      disc: 'Asst. Manager, operations',
+      img: rinshithaTeam,
+    },
+    {
+      name: 'Mohzina Ak',
+      disc: 'Senior faculty',
+      img: muhsinaTeam,
+    },
+    {
+      name: 'Bheema Ali',
+      disc: 'Senior faculty',
+      img: bheemaTeam,
+    },
+    {
+      name: 'Lasima Safad',
+      disc: 'Senior faculty',
+      img: lasminaTeam,
+    },
+    {
+      name: 'Deepika Sathish',
+      disc: 'Skyblue Faculty',
+      img: deepikaTeam,
+    },
+    {
+      name: 'Shirine Fathima',
+      disc: 'Skyblue Faculty',
+      img: shirineTeam,
+    },
+    {
+      name: 'Fazeelat',
+      disc: 'Skyblue team',
+      img: fazeelathTeam,
+    },
+    {
+      name: 'Rania Raheem',
+      disc: 'Admin Team',
+      img: raniaTeam,
+    },
+    {
+      name: 'Badhusha MM',
+      disc: 'Faculty',
+      img: badhushaTeam,
+    },
+    {
+      name: 'Zamil Yousef',
+      disc: 'Accounts Team',
+      img: zamilTeam,
+    },
+    {
+      name: 'Jasim Azeez',
+      disc: 'Content Creator',
+      img: jasimTeam,
+    },
+    // {
+    //   name: 'Maria Sharapova',
+    //   disc: 'World-Class Tennis Superstar, Investor and Entrepreneur',
+    //   img: 'https://apim.dct.gov.ae/SCD//media/mdzhnr5t/maria-sharapova.jpg',
+    // }
 ];
 
 var settings = {

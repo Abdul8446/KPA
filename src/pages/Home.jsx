@@ -78,22 +78,19 @@ function Home() {
   };
 
     return (
-      <div className="bg-[#E9E3D4]">
-            <div className="background-attachment"></div>
-            <Header />
-            <Hero onScrollToStats={scrollToStats}/>
-            <StatsSection ref={statsRef}/>
-          {/* <SmoothScroll> */}
-            <Courses />
-            <Features />
-            <Faculties />
-            {/* <EventsCalendar /> */}
-            <Testimonials /> 
-            <LatestReads/>
-            <NewsletterSignup/>
-            <Footer/>
-          {/* </SmoothScroll> */}
-      </div>
+      <>
+        <Hero onScrollToStats={scrollToStats}/>
+        <StatsSection ref={statsRef}/>
+        {/* <SmoothScroll> */}
+        <Courses />
+        <Features />
+        <Faculties />
+        {/* <EventsCalendar /> */}
+        <Testimonials /> 
+        <LatestReads/>
+        <NewsletterSignup/>
+        {/* </SmoothScroll> */}
+      </>
     );
 }
 

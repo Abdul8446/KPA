@@ -535,5 +535,9 @@ body section, body header {
 }
 
 
+.categories::-webkit-scrollbar {
+  display: none;
+}
+
 
 

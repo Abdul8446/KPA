@@ -5,12 +5,26 @@ import {motion} from 'framer-motion'
 import { Facebook, Instagram, Linkedin, Share2, Link2, Orbit, OrbitIcon, Link } from 'lucide-react';
 import { useMobile } from '../contexts/MobileContext';
 import ToggleMenu from './ToggleMenu';
+import academicCatBg from '../assets/images/academic-cat-bg.jpg'
+import professionalCatBg from '../assets/images/professional-cat-bg.jpg'
+import skillCatBg from '../assets/images/skill-cat-bg.jpg'
+import skyblueCatBg from '../assets/images/skybluekids-cat-bg.jpg'
+import { useNavigate } from 'react-router-dom';
+import { useCategory } from '../contexts/CategoryContext';
 
 const Header = () => {
-  const {isMobile} = useMobile()  
+  const {isMobile} = useMobile() 
+  const { selectedCategory, setSelectedCategory } = useCategory();
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [socialOpen, setSocialOpen] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate() 
+
+  const goToCourses = (category) => {
+    setDropdownOpen(false)
+    setSelectedCategory(category);
+    navigate('/courses'); // Navigate to Courses page
+  };
 
   return (
     <header className={`text-[#003A2E] z-40 ${isMobile?'py-2 relative':'py-4'}`}>
@@ -26,23 +40,27 @@ const Header = () => {
             >
             <div className="grid grid-cols-2 gap-4 mb-3 h-full">
                 <div 
-                    className="bg-[#F9F4F4] p-3 rounded-lg text-center text-[#003A2E] bg-cover"
-                    style={{backgroundImage:"url('https://images.pexels.com/photos/5676744/pexels-photo-5676744.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')"}}
-                >😊 General</div>
-                <div 
-                    className="bg-[#F9F4F4] p-3 rounded-lg text-center text-[#003A2E] bg-cover"
-                    style={{backgroundImage:"url('https://images.pexels.com/photos/710743/pexels-photo-710743.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')"}}
-                >👩‍🎓 Students</div>
+                    onClick={()=>goToCourses('Academic Programs')}
+                    className="cursor-pointer bg-[#F9F4F4] flex flex-col justify-end p-3 rounded-lg text-center text-white merriweather-regular bg-cover bg-center"
+                    style={{backgroundImage:`url(${academicCatBg})`}}
+                >Academic Programs</div>
                 <div
-                    className="bg-[#F9F4F4] p-3 rounded-lg text-center text-[#003A2E] bg-cover"
-                    style={{backgroundImage:"url('https://images.pexels.com/photos/8613089/pexels-photo-8613089.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')"}}
-                >🧒 Kids</div>
+                    onClick={()=>goToCourses('Professional Programs')}
+                    className="cursor-pointer bg-[#F9F4F4] flex flex-col justify-end py-3 px-0 rounded-lg text-center text-white merriweather-regular bg-cover bg-center"
+                    style={{backgroundImage:`url(${professionalCatBg})`}}
+                >Professional Programs</div>
                 <div 
-                    className="bg-[#F9F4F4] p-3 rounded-lg text-center text-[#003A2E] bg-cover"
-                    style={{backgroundImage:"url('https://images.pexels.com/photos/6146978/pexels-photo-6146978.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')"}}
-                >👵 Seniors</div>
+                    onClick={()=>goToCourses('Skill Development')}
+                    className="cursor-pointer bg-[#F9F4F4] flex flex-col justify-end p-3 rounded-lg text-center text-white merriweather-regular bg-cover bg-center"
+                    style={{backgroundImage:`url(${skillCatBg})`}}
+                >Skill Development</div>
+                <div 
+                    onClick={()=>goToCourses('SkyBlue Kids')}
+                    className="cursor-pointer bg-[#F9F4F4] flex flex-col justify-end p-3 rounded-lg text-center text-white merriweather-regular bg-cover bg-center"
+                    style={{backgroundImage:`url(${skyblueCatBg})`}}
+                >Skyblue<br/> Kids</div>
             </div>
-            <button className="flex items-center justify-between w-full bg-[#BB914A] text-[#003A2E] px-4 py-2 rounded-lg">
+            <button onClick={()=>goToCourses('All courses')} className="flex items-center justify-between w-full bg-[#BB914A] text-[#003A2E] px-4 py-2 rounded-lg">
                 <span>All courses</span>
                 <span className="bg-[#003A2E] text-white px-2 py-1 rounded-md text-xs">New</span>
             </button>
@@ -53,7 +71,7 @@ const Header = () => {
                 {/* logo section */}
                 <img className={`${isMobile?'h-8 w-60':'h-16 w-auto'}`} src={kpaLogoWTMobile} alt="" />
                 {/* Navigation Menu */}
-                <div className={`${isMobile?'':"relative pb-2 ml-2 mt-2"}`} onMouseLeave={()=> setDropdownOpen(false)}>
+                <div className={`${isMobile?'':"relative pb-2 ml-6 mt-2"}`} onMouseLeave={()=> setDropdownOpen(false)}>
                     <button 
                     onMouseEnter={() => setDropdownOpen(true)} 
                     className={`${isMobile?'scale-[75%]':'scale-100'} flex items-center gap-2 text-[#003A2E] px-4 py-2 border-[2px] border-transparent rounded-full hover:bg-[#B68C49] hover:bg-opacity-50 hover:border-[#B68C49] transition duration-500`}>
@@ -70,23 +88,27 @@ const Header = () => {
                         >
                         <div className="grid grid-cols-2 gap-4 mb-3 h-full">
                             <div 
-                                className="bg-[#F9F4F4] p-3 rounded-lg text-center text-[#003A2E] bg-cover"
-                                style={{backgroundImage:"url('https://images.pexels.com/photos/5676744/pexels-photo-5676744.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')"}}
-                            >😊 General</div>
-                            <div 
-                                className="bg-[#F9F4F4] p-3 rounded-lg text-center text-[#003A2E] bg-cover"
-                                style={{backgroundImage:"url('https://images.pexels.com/photos/710743/pexels-photo-710743.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')"}}
-                            >👩‍🎓 Students</div>
+                                onClick={()=>goToCourses('Academic Programs')}
+                                className="cursor-pointer bg-[#F9F4F4] flex flex-col justify-end p-3 rounded-lg text-center text-white merriweather-regular bg-cover bg-center"
+                                style={{backgroundImage:`url(${academicCatBg})`}}
+                            >Academic Programs</div>
                             <div
-                                className="bg-[#F9F4F4] p-3 rounded-lg text-center text-[#003A2E] bg-cover"
-                                style={{backgroundImage:"url('https://images.pexels.com/photos/8613089/pexels-photo-8613089.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')"}}
-                            >🧒 Kids</div>
+                                onClick={()=>goToCourses('Professional Programs')}
+                                className="cursor-pointer bg-[#F9F4F4] flex flex-col justify-end py-3 px-0 rounded-lg text-center text-white merriweather-regular bg-cover bg-center"
+                                style={{backgroundImage:`url(${professionalCatBg})`}}
+                            >Professional Programs</div>
                             <div 
-                                className="bg-[#F9F4F4] p-3 rounded-lg text-center text-[#003A2E] bg-cover"
-                                style={{backgroundImage:"url('https://images.pexels.com/photos/6146978/pexels-photo-6146978.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')"}}
-                            >👵 Seniors</div>
+                                onClick={()=>goToCourses('Skill Development')}
+                                className="cursor-pointer bg-[#F9F4F4] flex flex-col justify-end p-3 rounded-lg text-center text-white merriweather-regular bg-cover bg-center"
+                                style={{backgroundImage:`url(${skillCatBg})`}}
+                            >Skill Development</div>
+                            <div 
+                                onClick={()=>goToCourses('SkyBlue Kids')}
+                                className="cursor-pointer bg-[#F9F4F4] flex flex-col justify-end p-3 rounded-lg text-center text-white merriweather-regular bg-cover bg-center"
+                                style={{backgroundImage:`url(${skyblueCatBg})`}}
+                            >Skyblue<br/> Kids</div>
                         </div>
-                        <button className="flex items-center justify-between w-full bg-[#BB914A] text-[#003A2E] px-4 py-2 rounded-lg">
+                        <button onClick={()=>goToCourses('All Courses')} className="flex items-center justify-between w-full bg-[#BB914A] text-[#003A2E] px-4 py-2 rounded-lg">
                             <span>All courses</span>
                             <span className="bg-[#003A2E] text-white px-2 py-1 rounded-md text-xs">New</span>
                         </button>
@@ -109,7 +131,7 @@ const Header = () => {
             </div> */}
             {/* Links and Icons */}
             <div className="flex items-center">
-            <a href="#" className={`text-[#003A2E] lg:block md:block xl:block sm:hidden ${isMobile?'hidden':''} text-xl lato-regular rounded-full border-[2px] border-transparent hover:border-[#B68C49] hover:bg-[#B68C49] hover:bg-opacity-50 px-3 py-2 md transition duration-500`}>Home</a>
+            <a onClick={()=>{navigate('/')}} className={`cursor-pointer text-[#003A2E] lg:block md:block xl:block sm:hidden ${isMobile?'hidden':''} text-xl lato-regular rounded-full border-[2px] border-transparent hover:border-[#B68C49] hover:bg-[#B68C49] hover:bg-opacity-50 px-3 py-2 md transition duration-500`}>Home</a>
             <a href="#" className={`text-[#003A2E] lg:block md:block xl:block sm:hidden ${isMobile?'hidden':''} text-xl lato-regular rounded-full border-[2px] border-transparent hover:border-[#B68C49] hover:bg-[#B68C49] hover:bg-opacity-50 px-3 py-2 transition duration-500`}>About</a>
             <div className="max-w-xs py-4" onMouseLeave={() => setSocialOpen(false)}>
                 <button onMouseEnter={() => setSocialOpen(true)}

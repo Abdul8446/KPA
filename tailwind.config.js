@@ -7,6 +7,7 @@ export default {
   theme: {
     extend: {},
   },
+  // other configurations
   plugins: [],
 }
 

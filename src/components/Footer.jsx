@@ -4,8 +4,7 @@ import { Phone, Mail, Facebook, Linkedin, Instagram } from 'lucide-react';
 
 const Footer = () => {
   return (
-    <section className='pt-10 pb-2
-    +'>
+    <section className='pt-10 pb-2'>
         <div className="bg-[#003A2E] text-white py-24 px-6 w-[95%] mx-auto rounded-2xl">
         <div className="max-w-7xl mx-auto">
             {/* Main Navigation Links */}

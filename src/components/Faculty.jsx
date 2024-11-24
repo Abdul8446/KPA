@@ -3,16 +3,16 @@ import styled from 'styled-components';
 import {motion} from 'framer-motion'
 
 const Faculty = (props) => {
-    const { img, disc, name } = props.item;
+    const { img, disc, name, frame } = props.item;
   return (
     <Container className='project'>
-        <img src={img} className='relative z-10 rounded-2xl transition-all aspect-[3/4] w-[60%] duration-1000' alt="project" />
+        <img src={img} className='relative z-10 rounded-2xl transition-all aspect-square object-top w-[60%] duration-1000' alt="project" />
         <div className="disc">
-            <h1 className='lato-regular'>{name}</h1>
-            <p className='merriweather-light'>{disc}</p>
+            <h1 className='lato-regular-italic'>{name}</h1>
+            <p className='merriweather-light-italic'>{disc}</p>
         </div>
-        <div className='background-frame-1 absolute left-1/2 -translate-x-1/2 inset-0 aspect-[3/4] w-[60%]  bg-[#003A2E] opacity-70 transform -rotate-3 rounded-2xl scale-[1.2] z-0'></div>
-        <div className='background-frame-2 absolute left-1/2 -translate-x-1/2 inset-0 aspect-[3/4] w-[60%]  bg-[#003A2E] opacity-20 transform -rotate-3 rounded-2xl scale-[1.2] -z-10'></div>
+        <div className={`background-frame-1 absolute left-1/2 -translate-x-1/2 inset-0 aspect-square w-[60%]  bg-[#003A2E] opacity-70 transform -rotate-3 rounded-2xl scale-[1.2] z-0`}></div>
+        <div className={`background-frame-2 absolute left-1/2 -translate-x-1/2 inset-0 aspect-square w-[60%]  bg-[#003A2E] opacity-20 transform -rotate-3 rounded-2xl scale-[1.2] -z-10'`}></div>
     </Container>
   )
 }
