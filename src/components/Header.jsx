@@ -60,7 +60,7 @@ const Header = () => {
                     style={{backgroundImage:`url(${skyblueCatBg})`}}
                 >Skyblue<br/> Kids</div>
             </div>
-            <button onClick={()=>goToCourses('All courses')} className="flex items-center justify-between w-full bg-[#BB914A] text-[#003A2E] px-4 py-2 rounded-lg">
+            <button onClick={()=>goToCourses('All Courses')} className="flex items-center justify-between w-full bg-[#BB914A] text-[#003A2E] px-4 py-2 rounded-lg">
                 <span>All courses</span>
                 <span className="bg-[#003A2E] text-white px-2 py-1 rounded-md text-xs">New</span>
             </button>
