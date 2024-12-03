@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { articles } from '../data/articles';
 import { CircleDecoration, SparkleDecoration, StarDecoration } from './decorations/BackgroundDecorations';
-import ArticleCard from './Blog/ArticleCard';
+import ArticleCard from './blog/ArticleCard';
 
 const Blogs = () => {
   return (
