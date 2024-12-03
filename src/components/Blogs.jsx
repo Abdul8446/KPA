@@ -1,8 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { articles } from '../data/articles';
-import ArticleCard from './Blog/ArticleCard';
 import { CircleDecoration, SparkleDecoration, StarDecoration } from './decorations/BackgroundDecorations';
+import ArticleCard from './Blog/ArticleCard';
 
 const Blogs = () => {
   return (

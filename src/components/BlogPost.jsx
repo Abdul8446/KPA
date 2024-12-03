@@ -3,8 +3,8 @@ import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft } from 'lucide-react';
 import { articles } from '../data/articles';
-import ArticleHeader from './Blog/ArticleHeader';
 import { CircleDecoration, SparkleDecoration, StarDecoration } from './decorations/BackgroundDecorations';
+import ArticleHeader from './blog/ArticleHeader';
 
 const BlogPost = () => {
   const { id } = useParams();
