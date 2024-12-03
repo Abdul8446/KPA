@@ -3,8 +3,10 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { Clock, GraduationCap } from 'lucide-react';
 import { useCategory } from '../contexts/CategoryContext';
 import { useMobile } from '../contexts/MobileContext';
+import { useNavigate } from 'react-router-dom';
 
 const CourseCard = ({ course }) => {
+  const navigate = useNavigate()
   const { isMobile } = useMobile()  
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -55,6 +57,7 @@ const CourseCard = ({ course }) => {
             <span className="text-[#BB914A] font-medium text-sm sm:text-base">{course.type}</span>
             <h2 className="text-2xl lato-regular text-[#003A2E] mt-2 line-clamp-2">{course.title}</h2>
             <motion.button
+                onClick={()=>navigate('/course-details')}
                 className="mt-4 px-4 sm:px-6 py-2 bg-[#003A2E] border border-[#BB914A] text-[#E9E3D4] rounded-full font-medium hover:bg-[#015343] hover:text-[#BB914A] transition-colors duration-200"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -469,58 +472,65 @@ useEffect(() => {
   };
 }, [loading]);
 
+const scrollToTop = () => {
+  if (ref?.current) {
+    ref.current.scrollIntoView({ behavior: 'smooth' });
+  }
+};
+
 // Condition to determine if there are more courses to load
 const hasMoreCourses = selectedCategory === 'All Courses'
   ? courses.length > visibleCourses.length
   : courses.filter(course => course.type === selectedCategory).length > visibleCourses.length;
 
 return (
-  <div ref={ref} className="bg-[#fff9] mt-10 py-8 sm:py-12 lg:py-16 w-[95%] rounded-2xl border border-white mx-auto px-3 sm:px-4 lg:px-6 relative">
-    {/* Navigation */}
-    <div className="relative flex flex-col items-center mb-8 sm:mb-12">
-      <div className="categories inline-flex bg-white rounded-full p-1 shadow-sm mb-4 sm:mb-6 overflow-x-auto max-w-[95%] sticky top-0">
-        {['All Courses', 'Academic Programs', 'Professional Programs', 'Skill Development', 'SkyBlue Kids'].map(
-          (category) => (
-            <button
-              key={category}
-              className={`px-3 sm:px-4 py-1.5 rounded-full text-xs sm:text-sm whitespace-nowrap ${
-                selectedCategory === category
-                  ? 'bg-[#BB914A] text-[#E9E3D4]'
-                  : 'text-[#003A2E] hover:bg-[#E9E3D4]'
-              }`}
-              onClick={() => {
-                setSelectedCategory(category);
-                setPage(1); // Reset to first page when category changes
-                setIsFirstLoad(true); // Reset first load flag
-              }}
-            >
-              {category}
-            </button>
-          )
+    <div ref={ref} className="bg-[#fff9] mt-10 py-8 sm:py-12 lg:py-16 w-[95%] rounded-2xl border border-white mx-auto px-3 sm:px-4 lg:px-6 relative">
+        {/* Navigation */}
+        <div className="flex flex-col items-center sticky top-5 z-10">
+            <div className="categories bg-white flex border border-[#BB914A] merriweather-light rounded-full p-1 shadow-sm mb-4 sm:mb-6 overflow-x-auto max-w-[95%]">
+                {['All Courses', 'Academic Programs', 'Professional Programs', 'Skill Development', 'SkyBlue Kids'].map(
+                (category) => (
+                    <button
+                    key={category}
+                    className={`px-3 sm:px-4 py-1.5 rounded-full text-xs sm:text-sm whitespace-nowrap ${
+                        selectedCategory === category
+                        ? 'bg-[#BB914A] text-[#E9E3D4]'
+                        : 'text-[#003A2E] hover:bg-[#E9E3D4]'
+                    }`}
+                    onClick={() => {
+                        setSelectedCategory(category);
+                        setPage(1); // Reset to first page when category changes
+                        setIsFirstLoad(true); // Reset first load flag
+                        scrollToTop(); // Scroll to top of the component
+                    }}
+                    >
+                    {category}
+                    </button>
+                )
+                )}
+            </div>
+        </div>
+        <h1 className="text-xl sm:text-2xl mb-8 sm:mb-12 font-semibold text-[#003A2E] text-center px-4">
+            Step Into the Classroom of Tomorrow
+        </h1>
+
+        {/* Course Cards */}
+        <div className="space-y-4 sm:space-y-6">
+        {visibleCourses.map((course) => (
+            <CourseCard key={course.id} course={course} />
+        ))}
+        </div>
+
+        {/* Loader for infinite scroll */}
+        {!isFirstLoad && loading && hasMoreCourses && (
+        <div className="flex justify-center py-6">
+            <div className="w-8 h-8 border-4 border-t-transparent border-[#BB914A] rounded-full animate-spin"></div>
+        </div>
         )}
-      </div>
-      <h1 className="text-xl sm:text-2xl font-semibold text-[#003A2E] text-center px-4">
-        Step Into the Classroom of Tomorrow
-      </h1>
+
+        {/* Invisible element to trigger loading more courses */}
+        {hasMoreCourses && <div ref={loadMoreRef} style={{ height: '1px' }}></div>}
     </div>
-
-    {/* Course Cards */}
-    <div className="space-y-4 sm:space-y-6">
-      {visibleCourses.map((course) => (
-        <CourseCard key={course.id} course={course} />
-      ))}
-    </div>
-
-    {/* Loader for infinite scroll */}
-    {!isFirstLoad && loading && hasMoreCourses && (
-      <div className="flex justify-center py-6">
-        <div className="w-8 h-8 border-4 border-t-transparent border-[#BB914A] rounded-full animate-spin"></div>
-      </div>
-    )}
-
-    {/* Invisible element to trigger loading more courses */}
-    {hasMoreCourses && <div ref={loadMoreRef} style={{ height: '1px' }}></div>}
-  </div>
 );
 });
 

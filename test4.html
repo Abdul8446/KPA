@@ -1,289 +1,134 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thema UI Design</title>
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        body {
-    font-family: Arial, sans-serif;
-    background-color: #fffbe9;
-    margin: 0;
-    padding: 0;
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      background-color: #2E3537;
+      font-family: 'Arial', sans-serif;
+    }
+    :root {
+      --cards: 4;
+      --cardHeight: 87vh;
+      --cardTopPadding: 1.5em;
+      --cardMargin: 4vw;
+    }
+    .container {
+      width: 90%;
+      margin: 0 auto;
+    }
+    #cards {
+      list-style: none;
+      padding-left: 0;
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(var(--cards), var(--cardHeight));
+      gap: var(--cardMargin);
+      padding-bottom: calc(var(--cards) * var(--cardTopPadding));
+      margin-bottom: var(--cardMargin);
+    }
 
-.navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 20px;
-    background-color: #fff5db;
-    border-bottom: 1px solid #e8e8e8;
-    position: relative;
-}
+    .card {
+      position: sticky; 
+      top: 0;
+      padding-top: calc(var(--index) * var(--cardTopPadding));
+    }
+    #card1 {
+      --index: 1;
+    }
+    #card2 {
+      --index: 2;
+    }
+    #card3 {
+      --index: 3;
+    }
+    #card4 {
+      --index: 4;
+    }
 
-.logo {
-    display: flex;
-    align-items: center;
-}
+    #card1 .card-body {
+      background-color: #52B2CF;
+    }
+    #card2 .card-body {
+      background-color: #7EC4CF;
+    }
+    #card3 .card-body {
+      background-color: #9CADCE;
+    }
+    #card4 .card-body {
+      background-color: #D4AFB9;
+    }
 
-.brand {
-    font-size: 1.5rem;
-    color: #6f2c91; /* Purple color */
-    font-weight: bold;
-}
+    .card-body {
+      box-sizing: border-box;
+      padding: 30px;
+      border-radius: 50px;
+      box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.3);
+      height: var(--cardHeight);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-.home-badge {
-    background-color: #f5b645; /* Yellow color */
-    color: white;
-    padding: 4px 8px;
-    margin-left: 8px;
-    border-radius: 5px;
-    font-size: 0.85rem;
-}
+    h2 {
+      font-size: 2.5em;
+    }
 
-.menu {
-    position: relative;
-}
+    /* Additional section styling */
+    section {
+      padding: 50px 0;
+      color: white;
+      text-align: center;
+    }
 
-.menu-icon {
-    font-size: 1.5rem;
-}
+    .section1 {
+      background-color: #003A2E; /* Color from your desired color scheme */
+    }
 
-.dropdown-btn {
-    background-color: #f5b645;
-    color: #6f2c91;
-    border: none;
-    padding: 8px 15px;
-    border-radius: 20px;
-    font-size: 1rem;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: white;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-    padding: 15px;
-    border-radius: 10px;
-    top: 40px;
-    z-index: 1;
-}
-
-.menu:hover .dropdown-content {
-    display: block;
-}
-
-.course-categories {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin-bottom: 10px;
-}
-
-.category {
-    background-color: #f9f4f4;
-    padding: 10px;
-    border-radius: 10px;
-    text-align: center;
-    color: #6f2c91;
-    font-size: 0.9rem;
-}
-
-.all-courses-btn {
-    background-color: #f5b645;
-    color: #6f2c91;
-    border: none;
-    padding: 10px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    cursor: pointer;
-}
-
-.new-badge {
-    background-color: #6f2c91;
-    color: white;
-    padding: 2px 6px;
-    border-radius: 5px;
-    font-size: 0.75rem;
-}
-
-.search-bar {
-    display: flex;
-    align-items: center;
-    border: 1px solid #6f2c91; /* Purple border */
-    border-radius: 20px;
-    padding: 5px 10px;
-    flex-grow: 1;
-    max-width: 400px;
-}
-
-.search-bar input {
-    border: none;
-    outline: none;
-    flex-grow: 1;
-    font-size: 1rem;
-    color: #6f2c91;
-}
-
-.search-bar button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: #6f2c91;
-}
-
-.links {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    color: #6f2c91; /* Purple color */
-    font-size: 1rem;
-}
-
-.links a {
-    text-decoration: none;
-    color: #6f2c91;
-}
-
-.icons {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    background-color: white;
-    border: 1px solid #6f2c91;
-    border-radius: 50%;
-    cursor: pointer;
-    position: relative;
-}
-
-.yellow-dot {
-    width: 8px;
-    height: 8px;
-    background-color: #f5b645;
-    border-radius: 50%;
-}
-
-.notification-badge {
-    position: absolute;
-    top: -5px;
-    right: -5px;
-    background-color: #f5b645;
-    color: white;
-    border-radius: 50%;
-    padding: 2px 6px;
-    font-size: 0.75rem;
-}
-
-.hero-section {
-    text-align: center;
-    margin: 50px 0;
-}
-
-.hero-section h1 {
-    font-size: 3rem;
-    color: #6f2c91;
-    line-height: 1.4;
-}
-
-.highlight {
-    background-color: #f5b645;
-    padding: 0 5px;
-    border-radius: 5px;
-}
-
-.hero-section p {
-    font-size: 1.25rem;
-    color: #6f2c91;
-    margin-bottom: 20px;
-}
-
-.discover-btn {
-    background-color: #f5b645;
-    color: white;
-    padding: 10px 20px;
-    font-size: 1rem;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-}
-
-    </style>
+    .section2 {
+      background-color: #B68C49; /* Color from your desired color scheme */
+    }
+  </style>
 </head>
 <body>
-    <div class="navbar">
-        <div class="logo">
-            <span class="brand">Thema</span>
-            <span class="home-badge">Home</span>
+  <!-- New Sections Added -->
+  <section class="section1">
+    <h2>Section 1</h2>
+    <p>This is the content of the first section. Add any information or content here.</p>
+  </section>
+
+  <section class="section2">
+    <h2>Section 2</h2>
+    <p>This is the content of the second section. Add any information or content here.</p>
+  </section>
+
+  <!-- Existing Container -->
+  <div class="container">
+    <ul id="cards">
+      <li class="card" id="card1">
+        <div class="card-body">
+          <h2>card 0</h2>
         </div>
-        <div class="menu">
-            <button class="dropdown-btn">
-                <span class="menu-icon">•••</span>
-                <span class="menu-text">Courses</span>
-            </button>
-            <div class="dropdown-content">
-                <div class="course-categories">
-                    <div class="category">😊 General</div>
-                    <div class="category">👩‍🎓 Students</div>
-                    <div class="category">🧒 Kids</div>
-                    <div class="category">👵 Seniors</div>
-                </div>
-                <button class="all-courses-btn">
-                    <span>All courses</span>
-                    <span class="new-badge">New</span>
-                </button>
-            </div>
+      </li>
+      <li class="card" id="card2">
+        <div class="card-body">
+          <h2>card 1</h2>
         </div>
-        <div class="search-bar">
-            <input type="text" placeholder="Search courses, or instructors">
-            <button type="submit">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001l3.85 3.85a1 1 0 0 0 1.415-1.415l-3.85-3.85zm-5.708 1.14a5.5 5.5 0 1 1 7.778-7.778 5.5 5.5 0 0 1-7.778 7.778z"/>
-                </svg>
-            </button>
+      </li>
+      <li class="card" id="card3">
+        <div class="card-body">
+          <h2>card 2</h2>
         </div>
-        <div class="links">
-            <a href="#">Overview</a>
-            <a href="#">About</a>
+      </li>
+      <li class="card" id="card4">
+        <div class="card-body">
+          <h2>card 3</h2>
         </div>
-        <div class="icons">
-            <div class="icon">
-                <div class="yellow-dot"></div>
-            </div>
-            <div class="icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-share" viewBox="0 0 16 16">
-                    <path d="M13.5 1a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm-11 11a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0zm8-5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z"/>
-                </svg>
-            </div>
-            <div class="icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
-                    <path d="M8 1a2 2 0 0 0-2 2v1H3.5A1.5 1.5 0 0 0 2 5.5v8A1.5 1.5 0 0 0 3.5 15h9A1.5 1.5 0 0 0 14 13.5v-8A1.5 1.5 0 0 0 12.5 4H10V3a2 2 0 0 0-2-2zM6 3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v1H6V3zm-1 3v7h7V6H5z"/>
-                </svg>
-                <span class="notification-badge">0</span>
-            </div>
-            <div class="icon more-options">•••</div>
-        </div>
-    </div>
-    <div class="hero-section">
-        <h1>Your <span class="highlight">success</span>. The courses that <br> change your <span class="highlight">life</span>.</h1>
-        <p>Future-proof your career. Master skills that matter today.</p>
-        <button class="discover-btn">Discover <span>↓</span></button>
-    </div>
+      </li>
+    </ul>
+  </div>
 </body>
 </html>

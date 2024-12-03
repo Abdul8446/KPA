@@ -122,10 +122,12 @@ import { motion } from "framer-motion";
 import { X } from 'lucide-react';
 import { useMobile } from '../contexts/MobileContext';
 import buildingImageAddress from '../assets/images/building-image-address.jpeg'
+import { useNavigate } from 'react-router-dom';
 
 function ToggleMenu({ isOpen, onClose }) {
     const {isMobile} = useMobile()
     const containerRef = useRef(null); 
+    const navigate = useNavigate()
     const menuItems = [
         "Home",
         "Courses",
@@ -136,6 +138,12 @@ function ToggleMenu({ isOpen, onClose }) {
         "Store",
         "Questions",
       ];
+
+    const goToPage = (page) => {
+        console.log(page.toLowerCase())
+        onClose()
+        navigate(`/${page.toLowerCase()==='home'?'':page.toLowerCase()}`)
+    }  
 
     // Animation Variants
     const menuVariants = {
@@ -158,7 +166,7 @@ function ToggleMenu({ isOpen, onClose }) {
         initial="hidden"
         animate={isOpen ? "visible" : "hidden"}
         variants={menuVariants}
-        transition={{ type: "spring", stiffness: 70, damping: 15, duration: 0.3,delay:isOpen?0:1 }}
+        transition={{  duration:0.4, delay:isOpen?0:0.8 }}
     >
       <div ref={containerRef} className={`absolute flex ${isMobile?'flex-col overflow-scroll inset-y-14 inset-2':'flex-row-reverse inset-14'} gap-6`}>
         <motion.div
@@ -178,6 +186,7 @@ function ToggleMenu({ isOpen, onClose }) {
             >
                 {menuItems.map((item, index) => (
                 <li
+                    onClick={()=>{goToPage(item)}}
                     key={index}
                     className="group text-[#003A2E] flex items-center font-bold cursor-pointer"
                 >

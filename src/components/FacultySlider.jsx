@@ -98,11 +98,11 @@ var settings = {
     dots: false,
     infinite: true,
     speed: 1000,
-    slidesToShow: 3,
+    slidesToShow: 5,
     slidesToScroll: 1,
     initialSlide: 0,
     arrows : false,
-    centerPadding: "100px", 
+    centerPadding: "0px", 
     responsive: [
       {
         breakpoint: 990,

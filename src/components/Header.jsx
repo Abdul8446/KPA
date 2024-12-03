@@ -131,8 +131,8 @@ const Header = () => {
             </div> */}
             {/* Links and Icons */}
             <div className="flex items-center">
-            <a onClick={()=>{navigate('/')}} className={`cursor-pointer text-[#003A2E] lg:block md:block xl:block sm:hidden ${isMobile?'hidden':''} text-xl lato-regular rounded-full border-[2px] border-transparent hover:border-[#B68C49] hover:bg-[#B68C49] hover:bg-opacity-50 px-3 py-2 md transition duration-500`}>Home</a>
-            <a href="#" className={`text-[#003A2E] lg:block md:block xl:block sm:hidden ${isMobile?'hidden':''} text-xl lato-regular rounded-full border-[2px] border-transparent hover:border-[#B68C49] hover:bg-[#B68C49] hover:bg-opacity-50 px-3 py-2 transition duration-500`}>About</a>
+            <a onClick={()=>{navigate('/')}} className={`cursor-pointer text-[#003A2E] lg:block xl:block sm:hidden ${isMobile?'hidden':''} text-xl lato-regular rounded-full border-[2px] border-transparent hover:border-[#B68C49] hover:bg-[#B68C49] hover:bg-opacity-50 px-3 py-2 md transition duration-500`}>Home</a>
+            <a onClick={()=>{navigate('/about')}} className={`cursor-pointer text-[#003A2E] lg:block md:block xl:block sm:hidden ${isMobile?'hidden':''} text-xl lato-regular rounded-full border-[2px] border-transparent hover:border-[#B68C49] hover:bg-[#B68C49] hover:bg-opacity-50 px-3 py-2 transition duration-500`}>About</a>
             <div className="max-w-xs py-4" onMouseLeave={() => setSocialOpen(false)}>
                 <button onMouseEnter={() => setSocialOpen(true)}
                 className={`${isMobile && 'hidden'} w-12 ml-2 h-12 border border-[#003A2E] rounded-2xl flex items-center justify-center cursor-pointer`}

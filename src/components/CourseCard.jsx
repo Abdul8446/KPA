@@ -48,7 +48,7 @@ const CourseCard = () => {
     <div ref={containerRef} className={`relative flex ${isMobile?'aspect-[5/3]':'lg:aspect-square md:aspect-square sm:aspect-[5/3]'} w-full items-center justify-center `}>
       {/* Background decorative elements */}
       <motion.div 
-        className="absolute inset-0 bg-[#BB914A] rounded-3xl opacity-50 transition-all duration-1000 transform rotate-[-4deg]"
+        className="absolute inset-0 bg-[#bd9d66] z-0 rounded-3xl transition-all duration-1000 transform rotate-[-4deg]"
       />
       
       {/* Foreground decorative element */}
@@ -57,10 +57,10 @@ const CourseCard = () => {
             hover:{rotate:-8}
         }}
         transition={{
-          duration: .5, // Make animation slower (1.5 seconds)
+          duration: .3, // Make animation slower (1.5 seconds)
           ease: 'easeInOut', // Use a smoother easing
         }}
-        className="absolute inset-0 bg-[#BB914A] rounded-3xl opacity-25 transform rotate-[-4deg]" 
+        className="absolute inset-0 bg-[#79918c] -z-10 rounded-3xl transform rotate-[-4deg]" 
       />
       <motion.div
         variants={{

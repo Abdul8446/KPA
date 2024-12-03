@@ -45,7 +45,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import CourseCard from './CourseCard';
 import { useMobile } from '../contexts/MobileContext';
-import { Book, Clock, DollarSign, ArrowRight } from 'lucide-react';
+import { Book, Clock, DollarSign, ArrowRight, GraduationCap } from 'lucide-react';
 
 const Courses = () => {
     const { isMobile } = useMobile();
@@ -85,18 +85,19 @@ const Courses = () => {
                                  <h3 className="mt-4 text-xl text-[#003A2E] text-left lato-regular">Conquering Public Speaking: Confidence, Clarity, and Charisma</h3>
                                  {/* <p>Course description goes here</p> */}
                              </div>
-                             <motion.button 
+                             <motion.div 
                                  variants={{
-                                     hover: { opacity:1,scale: 1 },
-                                     initial: { scale: .8 ,opacity:0}
+                                     hover: { opacity:1,y:-20,scale: 1 },
+                                     initial: { scale: .8 ,y:0,opacity:0}
                                  }}
                                  transition={{
                                     duration: .5, // Make animation slower (1.5 seconds)
                                     ease: 'easeInOut', // Use a smoother easing
                                  }}
-                                 className='rounded-full flex justify-between px-3 py-2 text-md mt-10 w-full border border-[#003A2E] bg-white'>
-                                 <span className='merriweather-light'>About the course</span><ArrowRight/>
-                             </motion.button>
+                                 className='flex mt-10 justify-between w-full gap-5'>
+                                 <button className='merriweather-light rounded-full flex justify-between px-3 py-2 text-md w-full border border-[#003A2E] bg-white'><span>About the course</span><ArrowRight/></button>
+                                 <button className='rounded-full px-5 py-2 border border-[#744e0e] bg-[#BB914A]'><GraduationCap className='text-white'/></button>
+                             </motion.div>
                          </motion.div>
                      ))}
                  </div>
