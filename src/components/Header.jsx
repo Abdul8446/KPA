@@ -146,26 +146,35 @@ const Header = () => {
                 >
                     {/* Social media buttons */}
                     <div className="space-y-3">
-                    <button
+                    <a
+                        href='https://www.facebook.com/kingpinsacademy/' 
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="w-full p-3 flex items-center justify-center rounded-xl bg-blue-500 hover:bg-blue-600 text-white transition-colors"
                         // onClick={() => handleShare('facebook')}
                     >
                         <Facebook className="w-5 h-5" />
-                    </button>
+                    </a>
                     
-                    <button
+                    <a
+                        href='https://www.linkedin.com/school/kingpins-academy/' 
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="w-full p-3 flex items-center justify-center rounded-xl bg-blue-700 hover:bg-blue-800 text-white transition-colors"
                         // onClick={() => handleShare('linkedin')}
                     >
                         <Linkedin className="w-5 h-5" />
-                    </button>
+                    </a>
                     
-                    <button
+                    <a
+                        href='https://www.instagram.com/kingpinsacademy/' 
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="w-full p-3 flex items-center justify-center rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white transition-colors"
                         // onClick={() => handleShare('instagram')}
                     >
                         <Instagram className="w-5 h-5" />
-                    </button>
+                    </a>
                     </div>
                 </motion.div>
                 </button>
