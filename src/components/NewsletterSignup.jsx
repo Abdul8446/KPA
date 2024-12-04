@@ -88,7 +88,7 @@ const NewsletterSignup = () => {
                       Subscribe Now
                   </button>
                   </motion.div> */}
-                  <motion.button className={`group sm:mx-[unset] whitespace-nowrap  relative flex 2xl:transform 2xl:scale-125 items-center justify-between px-5 sm:px-7 py-3 sm:py-4 rounded-full bg-[#003A2E] transition-all duration-500 hover:shadow-slate-600`}
+                  <motion.button className={`group sm:mx-[unset] max-w-fit whitespace-nowrap  relative flex 2xl:transform 2xl:scale-125 items-center justify-between px-5 sm:px-7 py-3 sm:py-4 rounded-full bg-[#003A2E] transition-all duration-500 hover:shadow-slate-600`}
                       type="submit"
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}

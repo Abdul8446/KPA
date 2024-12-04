@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { MoreHorizontal, Sparkles } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import ImageComponent from './lazy-components/ImageComponent';
+// import ImageComponent from './lazy-components/ImageComponent';
 
 // SVG Decorative Elements
 export const CircleDecoration = () => (
@@ -76,14 +76,14 @@ export const ArticleCard = ({ article }) => (
   >
     <div className="relative z-10">
       <div className="relative">
-        <ImageComponent variant="rectangle" animation="wave" height='12rem' width='100%' background='#d3d3d333'>
+        {/* <ImageComponent variant="rectangle" animation="wave" height='12rem' width='100%' background='#d3d3d333'> */}
           {/* <img src={require('../../assets/images/1xbettopbanner.gif')} height={'90%'} width={'65%'} alt=""/> */}
           <img 
             src={article.image} 
             alt={article.title}
             className="w-full h-36 md:h-48 object-cover rounded-2xl bg-[#d3d3d333]"
           />
-        </ImageComponent>
+        {/* </ImageComponent> */}
         {article.featured && (
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}

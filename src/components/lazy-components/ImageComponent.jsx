@@ -1,4 +1,4 @@
-import { Skeleton } from '@mui/material';
+// import { Skeleton } from '@mui/material';
 import React, { useState, useEffect } from 'react';
 
 const ImageComponent = (props) => {
@@ -25,11 +25,11 @@ const ImageComponent = (props) => {
       {loading ? (
         <>
           <img src={props.src} style={{display:'none'}} onError={()=>setLoading(false)} />
-          <Skeleton variant={props.variant} 
+          {/* <Skeleton variant={props.variant} 
           animation={props.animation} 
           height={props.selfheight} 
           width={props.selfwidth} 
-          sx={{height:props.height, width:props.width, background:props.background,borderRadius:props.borderRadius}} className='rounded-2xl'/>
+          sx={{height:props.height, width:props.width, background:props.background,borderRadius:props.borderRadius}} className='rounded-2xl'/> */}
         </>
       ) : (
         props.children  
