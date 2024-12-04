@@ -10,14 +10,14 @@ const Hero = ({onScrollToStats}) => {
     return (
         <section className={`text-[#003A2E] ${isMobile?'':''} text-center`}>
             <div
-                className={`w-[95%] mx-auto rounded-2xl border ${isMobile?'py-5':'py-[10em]'} lg:px-[6vw] md:px-[6vw] sm:px-[6vw] border-[#ffffffe6]`}
+                className={`w-[95%] mx-auto rounded-2xl 2xl:rounded-3xl border py-10 sm:px-10 sm:py-16 md:px-16 md:py-24 lg:px-20 2xl:px-24 border-white`}
                 style={{ backgroundImage: 'linear-gradient(135deg, #ffffffb3, transparent)' }}
             >
                 <motion.h1
                     initial={{ opacity: 0, y: -50 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
-                    className="text-4xl lg:text-7xl lato-regular font-semibold mb-4"
+                    className="text-4xl lg:text-7xl 2xl:text-8xl lato-regular font-semibold mb-4"
                 >
                     Shape your <span className="text-[#BB914A]">success.</span> <br />
                     Explore courses that <br />

@@ -1,9 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { MoreHorizontal, Sparkles } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import ImageComponent from './lazy-components/ImageComponent';
 
 // SVG Decorative Elements
-const CircleDecoration = () => (
+export const CircleDecoration = () => (
   <motion.div
     initial={{ opacity: 0, scale: 0 }}
     animate={{ opacity: 1, scale: 1 }}
@@ -13,7 +15,7 @@ const CircleDecoration = () => (
   </motion.div>
 );
 
-const StarDecoration = () => (
+export const StarDecoration = () => (
   <motion.div
     initial={{ opacity: 0, rotate: -45 }}
     animate={{ opacity: 1, rotate: 0 }}
@@ -28,7 +30,7 @@ const StarDecoration = () => (
   </motion.div>
 );
 
-const SparkleDecoration = () => (
+export const SparkleDecoration = () => (
   <motion.div
     initial={{ opacity: 0, rotate: 45 }}
     animate={{ opacity: 1, rotate: 0 }}
@@ -64,7 +66,7 @@ const articles = [
   }
 ];
 
-const ArticleCard = ({ article }) => (
+export const ArticleCard = ({ article }) => (
   <motion.div
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
@@ -74,11 +76,14 @@ const ArticleCard = ({ article }) => (
   >
     <div className="relative z-10">
       <div className="relative">
-        <img 
-          src={article.image} 
-          alt={article.title}
-          className="w-full h-36 md:h-48 object-cover rounded-2xl"
-        />
+        <ImageComponent variant="rectangle" animation="wave" height='12rem' width='100%' background='#d3d3d333'>
+          {/* <img src={require('../../assets/images/1xbettopbanner.gif')} height={'90%'} width={'65%'} alt=""/> */}
+          <img 
+            src={article.image} 
+            alt={article.title}
+            className="w-full h-36 md:h-48 object-cover rounded-2xl bg-[#d3d3d333]"
+          />
+        </ImageComponent>
         {article.featured && (
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
@@ -101,20 +106,21 @@ const ArticleCard = ({ article }) => (
         <h3 className="lato-regular text-lg md:text-xl font-bold text-[#003A2E] mb-3 md:mb-4 leading-snug">
           {article.title}
         </h3>
-
-        <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          className="merriweather-light text-[#003A2E] font-semibold relative inline-block group text-sm md:text-base"
-        >
-          Read Articles
-          <motion.div
-            className="absolute -bottom-1 left-0 w-full h-1 bg-[#B68C49] rounded-full"
-            initial={{ scaleX: 0 }}
-            whileHover={{ scaleX: 1 }}
-            transition={{ type: "spring", stiffness: 300 }}
-          />
-        </motion.button>
+        <Link to={`/blog/${article.id}`} className="inline-block">
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="merriweather-light group text-[#003A2E] font-semibold relative inline-block group text-sm md:text-base"
+          >
+            Read Article
+            <motion.div
+              className="absolute -bottom-1 scale-x-0 group-hover:scale-x-100 left-0 w-full h-1 bg-[#B68C49] rounded-full transition-transform duration-300 ease-in"
+              // initial={{ scaleX: 0 }}
+              // whileHover={{ scaleX: 1 }}
+              // transition={{ type: "spring", stiffness: 300 }}
+            ></motion.div>
+          </motion.button>
+        </Link>  
       </div>
     </div>
 
@@ -124,7 +130,7 @@ const ArticleCard = ({ article }) => (
   </motion.div>
 );
 
-const LatestReads = () => {
+export const LatestReads = () => {
   return (
     <section className='pt-6 md:pt-10'>
       <div className="relative w-[95%] rounded-2xl bg-white mx-auto px-4 py-10 md:py-16 overflow-hidden">
@@ -181,4 +187,3 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-export default LatestReads;

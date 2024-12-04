@@ -54,13 +54,13 @@ const ParallaxCard = () => {
   };
 
   return (
-    <div ref={containerRef} className="relative flex w-full mt-16 items-center justify-center lg:h-[110vh] md:h-[100vh] sm:h-[100vh] h-[50vh] px-4">
+    <div ref={containerRef} className="relative flex w-full mt-16 items-center justify-center aspect-[4/5] md:aspect-[4/5] lg:aspect-[5/4] 2xl:aspect-[5/3] px-4">
       {/* Background decorative elements */}
-      <div className={`absolute ${isMobile?'inset-y-7 inset-x-7':'inset-10'} bg-[#BB914A] ${isMobile?'rounded-2xl':'rounded-3xl'} opacity-50 transition-all duration-300 transform rotate-[-6deg]`}
+      <div className={`absolute ${isMobile?'inset-y-7 inset-x-7':'inset-10 lg:inset-10'} bg-[#fff9] border border-white rounded-2xl sm:rounded-3xl 2xl:rounded-[3rem] opacity-50 transition-all duration-300 transform rotate-[-6deg]`}
       />
       
       {/* Foreground decorative element */}
-      <div className={`absolute ${isMobile?'inset-y-7 inset-x-7':'inset-10'} bg-[#BB914A] ${isMobile?'rounded-2xl':'rounded-3xl'} opacity-50 transition-all duration-300 transform rotate-[6deg]`} 
+      <div className={`absolute ${isMobile?'inset-y-7 inset-x-7':'inset-10 lg:inset-10'} bg-[#fff9] border border-white rounded-2xl sm:rounded-3xl 2xl:rounded-[3rem] opacity-50 transition-all duration-300 transform rotate-[4deg]`} 
       />
       <motion.div
         style={{ y: isMobile?frameMobY:frameY }}
@@ -127,7 +127,7 @@ const ParallaxCard = () => {
             className="absolute inset-0 pointer-events-none transition"
           >
             {/* Purple Badge */}
-            <div className={`flex absolute ${isMobile?'scale-[.6] bottom-20 -translate-x-11 rounded-xl':'scale-100 bottom-28 -left-7'} bg-[#692eaa] text-white px-6 py-6`}
+            <div className={`flex absolute ${isMobile?'scale-[.6] bottom-20 -translate-x-11 rounded-xl':'sm:scale-75 md:scale-100 bottom-28 sm:-left-12 md:-left-7'} bg-[#692eaa] text-white px-6 py-6`}
               style={{borderRadius:isMobile?'':'22% 7% 22% 22% / 50% 7% 50% 50%'}}
             >
               <div>
@@ -141,7 +141,7 @@ const ParallaxCard = () => {
             </div>
 
             {/* Green Badge */}
-            <div className={`absolute flex -right-7 top-14 ${isMobile?'scale-[.6] rounded-xl':'scale-100 rounded-full'} bg-emerald-400 text-[#2A4965] px-4 py-4`}>
+            <div className={`absolute flex -right-7 top-14 ${isMobile?'scale-[.6] rounded-xl':'sm:scale-75 md:scale-100 rounded-full'} bg-emerald-400 text-[#2A4965] px-4 py-4`}>
               <img className='w-[3rem] h-[3rem] mr-5' src="https://cdn.prod.website-files.com/66cdea42c062fe4a0348b29d/66cdea42c062fe4a0348b49e_icon-element-2.svg" alt="" />
               <div className='mr-2'>
                 <p className="text-3xl font-bold">24</p>
@@ -150,7 +150,7 @@ const ParallaxCard = () => {
             </div>
 
             {/* Decorative Flower */}
-            <div className={`absolute -right-8 -bottom-12 ${isMobile?'scale-[.5]':'scale-100'} w-32 h-32 opacity-20`}>
+            <div className={`absolute -right-8 -bottom-12 ${isMobile?'scale-[.5]':'sm:scale-75 md:scale-100'} w-32 h-32 opacity-20`}>
               <img src=" https://cdn.prod.website-files.com/66cdea42c062fe4a0348b29d/66cdea42c062fe4a0348b49e_icon-element-2.svg" alt="" />
             </div>
           </motion.div>

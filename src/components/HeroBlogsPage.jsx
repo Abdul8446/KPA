@@ -38,7 +38,7 @@ const HeroBlogsPage = ({onScrollToCourseList}) => {
               // animate={{ opacity: 1, y: 0 }}
               // transition={{ duration: 0.6, delay: 0.2 }}
             >
-              Transform Your Career Path
+              News and Insights
             </div>
             
             <motion.p 
@@ -47,7 +47,7 @@ const HeroBlogsPage = ({onScrollToCourseList}) => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              Elevate your career with our targeted professional courses.
+              Where Education Meets Inspiration
             </motion.p>
 
             {/* Button */}
@@ -61,7 +61,7 @@ const HeroBlogsPage = ({onScrollToCourseList}) => {
               whileTap={{ scale: 0.95 }}
               transition={{ duration: 0.6, delay: 0.6 }}
             >
-              Our offer
+              Articles
               <ArrowDown size={18} className='ml-2 text-[#B68C49]'/>
             </motion.button>
           </motion.div>

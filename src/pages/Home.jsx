@@ -8,10 +8,10 @@ import EventsCalendar from '../components/EventsCalendar';
 import SmoothScroll from "../components/SmoothScroll";
 import Faculties from '../components/Faculties';
 import Testimonials from '../components/Testimonials';
-import LatestReads from '../components/LatestReads';
 import NewsletterSignup from '../components/NewsletterSignup';
 import Footer from '../components/Footer';
 import StatsSection from '../components/StatsSectoin';
+import { LatestReads } from '../components/LatestReads';
 
 function Home() {
   const statsRef = useRef(null);

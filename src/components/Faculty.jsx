@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import {motion} from 'framer-motion'
 
 const Faculty = (props) => {
-    const { img, disc, name, frame } = props.item;
+    const { img, disc, name, mail, frame } = props.item;
   return (
     // <Container className='project bg-white rounded-2xl'>
     //     <img src={img} className='relative z-10 rounded-2xl transition-all aspect-square object-top w-[60%] duration-1000' alt="project" />
@@ -15,7 +15,7 @@ const Faculty = (props) => {
     //     {/* <div className={`background-frame-2 absolute left-1/2 -translate-x-1/2 inset-0 aspect-square w-[60%]  bg-[#003A2E] opacity-20 transform -rotate-3 rounded-2xl scale-[1.2] -z-10'`}></div> */}
     // </Container>
     <div className="max-w-64 p-2 mx-auto bg-white rounded-3xl shadow-lg overflow-hidden">
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col justify-center items-center">
         {/* Profile Image */}
         {/* <div className="w-64 h-64 mb-4 overflow-hidden object-top rounded-2xl"> */}
           {/* <img 
@@ -32,16 +32,16 @@ const Faculty = (props) => {
         </h2>
         
         {/* Title */}
-        <p className="text-gray-700 text-sm font-medium uppercase tracking-wide mb-2">
+        <h2 className="text-gray-700 text-sm font-medium uppercase tracking-wide mb-2 text-center">
           {disc}
-        </p>
+        </h2>
         
         {/* Email */}
         <a 
           href="mailto:resources@citizens.me" 
           className="text-gray-600 text-sm hover:text-cyan-400 transition-colors"
         >
-          resources@citizens.me
+          {mail}
         </a>
       </div>
     </div>

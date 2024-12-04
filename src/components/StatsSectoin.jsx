@@ -4,18 +4,18 @@ import { useInView } from 'framer-motion';
 
 const StatsSection = forwardRef((props, ref) => {
   return (
-    <section ref={ref} className=" text-[#003A2E] pt-10 text-center">
-        <div className="w-[95%] mx-auto min-h-[60vh] bg-[#fff9] px-8 py-16 rounded-xl relative overflow-hidden border border-white">
+    <section ref={ref} className=" text-[#003A2E] pt-5 md:pt-10 text-center">
+        <div className="w-[95%] mx-auto bg-[#fff9] px-8 py-24 rounded-2xl 2xl:rounded-3xl relative overflow-hidden border border-white">
         {/* Decorative elements */}
-        <div className="absolute top-8 left-8 w-8 h-8 rounded-full bg-yellow-200/80" />
-        <div className="absolute top-24 left-24 w-4 h-4 rounded-full bg-purple-300/60" />
-        <div className="absolute top-4 right-8 w-4 h-4 rounded-full bg-purple-400/60" />
-        <div className="absolute bottom-12 left-1/2 text-yellow-400 text-2xl">✧</div>
+        <div className="absolute top-8 left-8 w-8 h-8 rounded-full bg-[#BB914A]/80" />
+        <div className="absolute top-24 left-24 w-4 h-4 rounded-full bg-[#003A2E]/60" />
+        <div className="absolute top-4 right-8 w-4 h-4 rounded-full bg-[#003A2E]/60" />
+        <div className="absolute bottom-12 left-1/2 text-[#BB914A] text-2xl">✧</div>
 
         {/* Main content */}
         <div className="max-w-6xl mx-auto">
 
-            <div className=" lg:grid-cols-4 gap-6 mt-12 grid grid-cols-2 gap-x-16 gap-y-16 w-full">
+            <div className=" lg:grid-cols-4 gap-6 mt-12 grid grid-cols-2 md:gap-x-16 md:gap-y-16 w-full">
 
             <div className='flex items-center lato-regular'>
                 <h2 className="text-[#003A2E] text-2xl md:text-3xl font-bold mb-8">

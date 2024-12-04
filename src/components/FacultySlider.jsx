@@ -24,6 +24,7 @@ let data = [
       name: 'Sumiya Yusaf',
       disc: 'Director of academic & training',
       img: sumiyaTeam,
+      mail: 'dr-academic.kingpins.website'
     },
     {
       name: 'Rahul Govind',
@@ -39,6 +40,7 @@ let data = [
       name: 'Mohzina Ak',
       disc: 'Senior faculty',
       img: muhsinaTeam,
+      mail:''
     },
     {
       name: 'Bheema Ali',
